@@ -28,7 +28,7 @@ Pages:
 ## SharedComponents:
 Contains js scripts that help render shared components. For example: header.js and navbar.js would find element with id="header" and id="navbar" and generate child HTML nodes to create the header and footer.
 
-These are used to create the template of the page and linked in template_page.html to create the basic layout every page has (header on top, navbar on side, footer on bottom).
+These are used to create the template of the page and linked in template_page.html to create the basic layout every page has (header on top, navbar below header, main after. Signup/Login doesn't have nav).
 
 Header: Includes App name on left, Signin/Signout button on right (show depending on if user is signed in(we can use local storage to create user sessions)).
 
