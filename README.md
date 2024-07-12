@@ -23,7 +23,9 @@ Pages:
 - Login
 - Signup
 - Create Email (uses TinyMCE for email body)
-- View Emails page (includes delete email button)
+- View Emails page (includes delete email button and edit button)
+- Contact Us Page
+- Edit Emails page (done after create Email page)
 
 ## SharedComponents:
 Contains js scripts that help render shared components. For example: header.js and navbar.js would find element with id="header" and id="navbar" and generate child HTML nodes to create the header and footer.
