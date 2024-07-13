@@ -54,4 +54,31 @@ function generateEmailCards(emails){
   emailsDiv.innerHTML = emailCards.join('');
 }
 
+function handleDelete(emailId){
+  console.log(`Deleting email with ID: ${emailId}`);
+}
+
+function handleEdit(emailId){
+  console.log(`Editing email with ID: ${emailId}`);
+}
+
+function addDeleteListener(emails){
+  emails.forEach(email => {
+    const deleteButton = document.getElementById(`delete-${email._id}`);
+    deleteButton.addEventListener('click', () => {
+      handleDelete(email._id);
+    });
+  });
+}
+
+function addEditListener(emails){
+  emails.forEach(email => {
+    const editButton = document.getElementById(`edit-${email._id}`);
+    editButton.addEventListener('click', () => {
+      handleEdit(email._id);
+    });
+  });
+}
+
 generateEmailCards(emailList);
+addDeleteListener(emailList);
