@@ -82,3 +82,4 @@ function addEditListener(emails){
 
 generateEmailCards(emailList);
 addDeleteListener(emailList);
+addEditListener(emailList);
