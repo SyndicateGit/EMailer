@@ -32,11 +32,19 @@ function generateEmailCards(emails){
   const emailsDiv = document.getElementById('emails');
   const emailCards = emails.map(email => {
     return `
-      <div class="email">
-        <h2>${email.to_email}</h2>
-        <h3>${email.email_subject}</h3>
-        <p>${email.email_body}</p>
+      <div class='email flex flex-col'>
         <div class='flex justify-between'>
+          <h3>${email.to_email}</h3>
+          <div class="flex justify-between">
+            <button id='${"edit-"+ email._id}'>Edit</button>
+            <button id='${"delete-"+ email._id}'>Delete</button>
+          </div>
+        </div>
+        
+        
+        <h4>${email.email_subject}</h4>
+        <p>${email.email_body}</p>
+        <div class='flex flex-1 justify-between items-end'>
           <p>${email.date}</p>
           <p>${email.time}</p>
         </div>

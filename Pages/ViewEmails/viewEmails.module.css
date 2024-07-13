@@ -1,3 +1,4 @@
+/*Tailwind Like Styles*/
 .flex{
   display: flex;
 }
@@ -18,6 +19,14 @@
   align-items: center;
 }
 
+.items-end{
+  align-items: end;
+}
+
+.self-end{
+  align-self: flex-end;
+}
+
 .center{
   display: flex;
   justify-content: center;
@@ -27,4 +36,27 @@
 .full{
   width: 100%;
   height: 100%;
+}
+
+.flex-1{
+  flex: 1 1 0%;
+}
+
+/*****************************************************/
+
+button{
+  margin: 2px;
+  cursor: pointer;
+}
+
+#emails{
+  margin-left: 4rem;
+  margin-top: 2rem;
+}
+
+.email{
+  width:300px;
+  height: 100px;
+  border: 1px solid black;
+  margin-top: 1rem;
 }
