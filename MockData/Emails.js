@@ -1,6 +1,7 @@
 const emailList = [
   {
     _id: '1',
+    user: '1',
     to_email: 'recipient1@example.com',
     from_email: 'sender1@example.com',
     email_body: 'Hello, this is the body of the email 1.',
@@ -10,6 +11,7 @@ const emailList = [
   },
   {
     _id: '2',
+    user: '1',,
     to_email: 'recipient2@example.com',
     from_email: 'sender1@example.com',
     email_body: 'Hello, this is the body of the email 2.',
@@ -19,6 +21,7 @@ const emailList = [
   },
   {
     _id: '3',
+    user: '1',
     to_email: 'recipient3@example.com',
     from_email: 'sender1@example.com',
     email_body: 'Hello, this is the body of the email 3.',
