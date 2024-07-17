@@ -1,9 +1,12 @@
 
 function createHeader() {
-  const navbar = document.getElementById("header");
-  const childNode = document.createElement("div");
-  childNode.appendChild(document.createTextNode("Header"));
-  navbar.appendChild(childNode);
+  const header = document.getElementById("header");
+  const headerInner = document.createElement("div");
+  headerInner.classList.add('header-inner')
+  const headerContent = document.createElement('h1');
+  headerContent.textContent = 'EMAILER';
+  headerInner.appendChild(headerContent)
+  header.appendChild(headerInner);
 }
 
 createHeader();
