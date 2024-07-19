@@ -1,6 +1,6 @@
 function createNavbar() {
   // add the title of the page to this array
-  const pages = ["Create Email", "View Emails"];
+  const pages = ["Create Email", "View Emails", "Contact Us"];
 
   const navbar = document.getElementById("navbar");
   const navbarInner = document.createElement("div");
