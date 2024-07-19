@@ -1,9 +1,13 @@
 
 function createNavbar() {
   const navbar = document.getElementById("navbar");
-  const childNode = document.createElement("div");
-  childNode.appendChild(document.createTextNode("Navbar"));
-  navbar.appendChild(childNode);
+  const navbarInner = document.createElement("div");
+  navbarInner.classList.add('navbar-inner')
+
+  const navbarContent = document.createElement('h2')
+  navbarContent.textContent = 'Home'
+  navbarInner.appendChild(navbarContent);
+  navbar.appendChild(navbarInner);
 }
 
 createNavbar();
