@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../SharedComponents/header.js" defer></script>
+    <script src="./signup.js" defer></script>
+    <link rel="stylesheet" href="./signup.module.css">
+    <title>Sign Up Page</title>
+</head>
+<body>
+    <div id="header"></div>
+    <div id="form">
+        <h3>Sign Up Today</h3>
+        <form action="./signup.php" method="post">
+            <p>
+                <input type="text" id="fname" name="fname" required>
+                <label for="fname">FIRST NAME</label>
+            </p>
+            <p>
+                <input type="text" id="lname" name="lname" required>
+                <label for="lname">LAST NAME</label>
+            </p>
+            <p id="addBlock">
+                <input type="text" class="invalid" id="address" name="address" required>
+                <span> @example.com</span>
+                <label for="address">ADDRESS</label>
+            </p>
+            <p id="passBlock">
+                <input type="password" name="password" id="password" 
+                minlength="10" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}" required>
+                <label for="password">PASSWORD (10 characters minimum, upper and lowercase 
+                 & atleast 1 number)</label>
+            </p>
+            <p>
+                <label for="birthday">DATE OF BIRTH</label>
+                <input type="date" name="birthday" id="birthday" required>
+            </p>
+            <p>
+                <button type="submit">Signup</button>
+            </p>
+        </form>
+        <p>Already have an account? <a class="toLogin" href="../Login/login.html">Login</a></p>
+    </div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+</body>
+</html>
