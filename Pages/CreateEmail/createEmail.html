@@ -1,19 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create Email</title>
-  <link rel="stylesheet" href="../template_css.module.css">
+  <title>Emailer</title>
+  <link rel="stylesheet" href="createEmail.module.css">
+  <script src="../../SharedComponents/header.js"></script>
+  <script src="../../SharedComponents/navbar.js"></script>
+  <script src="js/tinymce/tinymce.min.js" type="application/javascript"></script>
+  <script src="createEmail.js"></script>
+
+
 </head>
 <body>
   <div id="header"></div>
   <div id="navbar"></div>
   <main>
     <!-- Page content goes here -->
-    Main
+    <div class="email-editor-section">
+  
+      <div class="editor-title-row">
+        <h1>Create a message</h1>
+      </div>
+      <div class="editor-row" id="button-row">
+        <div class="email-button-group">
+          <button type="button" class="email-button" id="draft-button" />
+            Save as draft
+          </button>
+          <button type="button" class="email-button" id="send-button" />
+          <i style=class="button-icon"><img src="send.svg" alt=""></i>
+            Send
+          </button>
+        </div>
+        
+      </div>
+      <form action="post">
+        <div class="editor-row single-input-field" id="recipient-row">
+          <input type="text" class="email-field" placeholder="Recipient">
+        </div>
+        <div class="editor-row single-input-field" id="subject-row">
+          <!-- <textarea id="email-subject-field" rows="1" placeholder="Add a subject"></textarea> -->
+          <input type="text" class="email-field" placeholder="Subject">
+        </div>
+        <div class="editor-row email-body-div">
+          <textarea name="email-body" id="email-body-editor" placeholder="Write your email"></textarea>
+        </div>
+      </form>
+    </div>
   </main>
-  <script src="../../SharedComponents/header.js"></script>
-  <script src="../../SharedComponents/navbar.js"></script>
 </body>
 </html>
