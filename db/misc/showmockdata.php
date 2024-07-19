@@ -37,11 +37,13 @@ $emails = $dbEmail->lookup_all();
     <table>
         <tr>
             <th>User</th>
+            <th>Email</th>
             <th>Password Hash</th>
         </tr>
         <?php foreach ($users as $user): ?>
         <tr>
             <td><?php echo htmlspecialchars($user['user']); ?></td>
+            <td><?php echo htmlspecialchars($user['email']); ?></td>
             <td><?php echo htmlspecialchars($user['pass']); ?></td>
         </tr>
         <?php endforeach; ?>

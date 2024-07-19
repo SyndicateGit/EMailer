@@ -7,7 +7,7 @@ require_once('../common.php');
 header('Content-Type: text/plain');
 try
 {
-  echo "Creating users DB...\n";
+  echo "Creating Email DB...\n";
   $db = new dbemail();
   $db->admin_create_db();
   echo "Finished creating DB.\n";

@@ -20,22 +20,18 @@ if (empty($currentUsers)) {
     exit; // Stop execution if no users exist
 }
 
-$usernames = array_column($currentUsers, 'user');
+$usernames = array_column($currentUsers, 'email', 'user');
 
 // Generate and insert mock emails
-for ($i = 0; $i < 10; $i++) {
-    $randomUserKey = array_rand($usernames);
-    $user = $usernames[$randomUserKey];
-
+foreach ($currentUsers as $user) {
     $to_email = generateRandomString(5) . '@example.com';
-    $from_email = generateRandomString(5) . '@example.com';
+    $from_email = $user['email']; 
     $email_body = 'This is a test email body.';
-    $email_subject = 'Test Email';
+    $email_subject = 'Test Email from ' . $user['user'];
     $date = date('Y-m-d');
     $time = date('H:i:s');
 
-    $dbEmail->insert($user, $to_email, $from_email, $email_body, $email_subject, $date, $time);
+    $dbEmail->insert($user['user'], $to_email, $from_email, $email_body, $email_subject, $date, $time);
     echo "Inserted email from: $from_email to: $to_email\n";
 }
-
 ?>
