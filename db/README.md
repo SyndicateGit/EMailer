@@ -1,37 +1,45 @@
 # Project Database Access Guide
 
 ## Overview
-Here are the instructions for accessing and manipulating user and email data within our [Project Database](https://comp3340.blanchad.myweb.cs.uwindsor.ca) via provided PHP scripts.
+This guide provides instructions for setting your own instance of our project database using provided PHP scripts. Follow these steps to configure and replicate the database environment on your server.
+
+
 
 ## Configuration
 The project is configured through the `config.php` file, which sets up the database connection and other global settings. Key configurations include:
-- **Database Type:** MySQL
-- **Host:** localhost
-- **Database Name:** ASK ME FOR DB NAME
-- **Username:** ASK ME FOR USERNAME
-- **Password:** ASK ME FOR DB PASSWORD
-- **Admin Restrictions:** Certain operations are IP-restricted and only available to the admin.
+- Log into http://www.myweb.cs.uwindsor.ca/ with your Uwin Credentials.
+- Navigate to Account Manager > Databases
+- Create a new database, keep track of your database name, and password.
+- Modify the `config.php` file to include your database details:
+    ```php
+    $CFG = new stdClass();
+    $CFG->base_url = 'your website URL';
+    $CFG->site_wide_password_salt = 'your chosen password salt';
+    $CFG->dbtype = 'mysql';
+    $CFG->dbhost = 'localhost';
+    $CFG->dbname = 'your_database_name';
+    $CFG->dbuser = 'your_username';
+    $CFG->dbpass = 'your_password';
+    $CFG->db_admin_permit_create_drop = TRUE;
+    $CFG->db_admin_only_allow_ip = 'your_ip_address (while connected to GlobalProtect VPN)';
+    $CFG->emailaddr_support = 'your@adminEmail.com';
+    ```
+## Setting Up Database Tables
+Use the PHP scripts provided to set up the initial structure of your database.
 
-## Database Classes
-- **db.php:** Base class for database interactions.
-- **dbuser.php:** Handles user-specific database operations.
-- **dbemail.php:** Manages email-related database activities.
+### Scripts and Their Functions
+- **`userdb-create.php`**: Creates the table for user data.
+- **`emaildb-create.php`**: Sets up the table for email data.
 
-## Key Operations
+### Running Scripts
+Scripts should be placed in your project directory and can be run directly from a web browser via the URL.
 
-### User Operations
-- **Create Users Table:** Execute `userdb-create.php` to create a table for users. This is IP-restricted to ensure only the admin can create a user table.
+**Example:** In your browser run: https://comp3340.blanchad.myweb.cs.uwindsor.ca/path/to/script.php
+
+### Other User Operations
 - **Destroy Users Table:** Run `userdb-destroy.php` to drop the users table. This is IP-restricted to ensure only the admin can drop the user table.
 - **Insert User:** Use the `mockuser.php` script to insert mock user data into the database.
 
 ### Email Operations
-- **Create Emails Table:** Use `emaildb-create.php` to initialize the emails table. Admin rights are required.
-- **Destroy Emails Table:** `emaildb-destroy.php` allows the admin to drop the emails table from the database. Admin rights are required.
+- **Destroy Emails Table:** `emaildb-destroy.php` allows the admin to drop the emails table from the database. This is IP-restricted to ensure only the admin can drop the user table.
 - **Insert Email:** The `mockemail.php` script can be used to generate and insert mock emails into the database.
-
-## Scripts and Usage
-
-### Running Scripts
-Scripts are located in the project directory and can be run directly from a web browser or via command line with a PHP server setup.
-
-**Example:** In your browser run: https://comp3340.blanchad.myweb.cs.uwindsor.ca/path/to/script.php
