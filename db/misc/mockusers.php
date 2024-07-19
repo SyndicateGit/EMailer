@@ -21,29 +21,11 @@ $usernames = array_column($currentUsers, 'user'); // Extract usernames from the 
 // Generate and insert mock users
 for ($i = 0; $i < 10; $i++) {
     $username = generateRandomString(8);
+    $email = generateRandomString(5) . '@example.com';
     $password = generateRandomString(12);
-    $dbUser->insert($username, $password);
-    echo "Inserted user: $username\n";
-    $usernames[] = $username; // Add newly created username to list
+    $dbUser->insert($username, $email, $password);
+    echo "Inserted user: $username with email $email\n";
+    $usernames[] = $username;
 }
 
-// Generate and insert mock emails
-for ($i = 0; $i < 30; $i++) {
-    if (empty($usernames)) {
-        echo "No users available to assign emails.\n";
-        break;
-    }
-    $randomUserKey = array_rand($usernames); // Get a random index from usernames array
-    $user = $usernames[$randomUserKey]; // Select a random user from existing users
-
-    $to_email = generateRandomString(5) . '@example.com';
-    $from_email = generateRandomString(5) . '@example.com';
-    $email_body = 'This is a test email body.';
-    $email_subject = 'Test Email';
-    $date = date('Y-m-d');
-    $time = date('H:i:s');
-
-    $dbEmail->insert($user, $to_email, $from_email, $email_body, $email_subject, $date, $time);
-    echo "Inserted email from: $from_email to: $to_email\n";
-}
 ?>

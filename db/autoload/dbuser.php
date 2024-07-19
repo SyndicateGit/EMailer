@@ -18,10 +18,25 @@ final class dbuser extends db
         $sql = <<<ZZEOF
 CREATE TABLE users (
   user VARCHAR(80) PRIMARY KEY,
+  email VARCHAR(255) UNIQUE NOT NULL,
   pass VARCHAR(255) NOT NULL
 )
 ZZEOF;
         return $this->db_handle()->exec($sql);
+    }
+
+    // Inserts a new user $user into the DBUser table having password $pass.
+    public function insert($user, $email, $pass)
+    {
+        $entry = array(
+          ':user' => $user,
+          ':email' => $email,
+          ':pass' => $this->compute_password_hash($pass),
+        );
+
+        $sql = 'INSERT INTO users (user, email, pass) VALUES (:user, :email, :pass)';
+        $stmt = $this->db_handle()->prepare($sql);
+        return $stmt->execute($entry);
     }
 
     public function admin_destroy_db()
@@ -53,21 +68,6 @@ ZZEOF;
         if (strlen($salted_pass) > 72)
             throw new Exception('Password + site salt too long to avoid truncation.');
         return password_verify($salted_pass, $hashed_pass) === TRUE;
-    }
-
-    // Inserts a new user $user into the DBUser table having password $pass.
-    public function insert($user, $pass)
-    {
-        // Create the entry to add...
-        $entry = array(
-          ':user' => $user,
-          ':pass' => $this->compute_password_hash($pass),
-        );
-
-        // Create the SQL prepared statement and insert the entry...
-        $sql = 'INSERT INTO users VALUES (:user, :pass)';
-        $stmt = $this->db_handle()->prepare($sql);
-        return $stmt->execute($entry);
     }
 
     // Erases an existing user $user from the DBUser table.
