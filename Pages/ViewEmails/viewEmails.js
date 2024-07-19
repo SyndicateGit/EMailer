@@ -91,3 +91,16 @@ function addEditListener(emails){
 generateEmailCards(emailList);
 addDeleteListener(emailList);
 addEditListener(emailList);
+
+const emailBodyConfig = {
+  promotion: false,
+  selector: '#email-body-editor',
+};
+
+const mainTinyMCEInit = {
+  promotion: false,
+  license: 'gpl',
+};
+
+tinymce.init(mainTinyMCEInit);
+tinymce.init(emailBodyConfig);

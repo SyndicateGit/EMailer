@@ -6,6 +6,7 @@
   <title>View Emails</title>
   <link rel="stylesheet" href="../template_css.module.css">
   <link rel="stylesheet" href="viewEmails.module.css">
+  <script src="../../js/tinymce/tinymce.min.js" type="application/javascript"></script>
 </head>
 <body>
   <div id="header"></div>
@@ -14,7 +15,22 @@
     <!-- Page content goes here -->
     <div class="full">
       <h1 class="center">View Emails</h1>
-      <div id="emails"></div>
+      <div class="flex full">
+        <div id="emails"></div>
+        <form id="edit-email-form" action="editEmail.php" method="post">
+          <div class="editor-row single-input-field" id="recipient-row">
+            <input type="text" class="email-field" placeholder="Recipient">
+          </div>
+          <div class="editor-row single-input-field" id="subject-row">
+            <!-- <textarea id="email-subject-field" rows="1" placeholder="Add a subject"></textarea> -->
+            <input type="text" class="email-field" placeholder="Subject">
+          </div>
+          <div class="editor-row email-body-div">
+            <textarea name="email-body" id="email-body-editor" placeholder="Write your email"></textarea>
+          </div>
+        </form>
+      </div>
+      
       
     </div>
   </main>
@@ -23,5 +39,6 @@
   <script src="../../SharedComponents/navbar.js"></script>
   <script src="../../SharedComponents/footer.js"></script>
   <script src="viewEmails.js"></script>
+
 </body>
 </html>

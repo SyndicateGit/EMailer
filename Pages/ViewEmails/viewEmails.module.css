@@ -68,3 +68,8 @@ button{
 .visible-false{
   display: none;
 }
+
+#edit-email-form{
+  margin-left: 50px;
+  margin-top: 50px;
+}
