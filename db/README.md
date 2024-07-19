@@ -1,7 +1,7 @@
 # Project Database Access Guide
 
 ## Overview
-Here are the instructions for accessing and manipulating user and email data within our Project Database via provided PHP scripts hosted at.
+Here are the instructions for accessing and manipulating user and email data within our [Project Database](https://comp3340.blanchad.myweb.cs.uwindsor.ca) via provided PHP scripts hosted at. 
 
 ## Configuration
 The project is configured through the `config.php` file, which sets up the database connection and other global settings. Key configurations include:
