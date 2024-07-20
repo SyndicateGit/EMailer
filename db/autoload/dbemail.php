@@ -15,15 +15,15 @@ final class dbemail extends db
 
         $sql = <<<ZZEOF
 CREATE TABLE emails (
-  _id INT AUTO_INCREMENT PRIMARY KEY,
-  user VARCHAR(80) NOT NULL,
-  to_email VARCHAR(255) NOT NULL,
-  from_email VARCHAR(255) NOT NULL,
-  email_body TEXT NOT NULL,
-  email_subject VARCHAR(255) NOT NULL,
-  date DATE NOT NULL,
-  time TIME NOT NULL,
-  FOREIGN KEY (user) REFERENCES users(user) ON DELETE CASCADE
+    _id INT AUTO_INCREMENT PRIMARY KEY,
+    user INT NOT NULL,
+    to_email VARCHAR(255) NOT NULL,
+    from_email VARCHAR(255) NOT NULL,
+    email_body TEXT NOT NULL,
+    email_subject VARCHAR(255) NOT NULL,
+    date DATE NOT NULL,
+    time TIME NOT NULL,
+    FOREIGN KEY (user) REFERENCES users(user) ON DELETE CASCADE
 )
 ZZEOF;
         return $this->db_handle()->exec($sql);

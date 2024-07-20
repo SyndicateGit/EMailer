@@ -17,24 +17,27 @@ final class dbuser extends db
         // is from this site and safe...
         $sql = <<<ZZEOF
 CREATE TABLE users (
-  user VARCHAR(80) PRIMARY KEY,
-  email VARCHAR(255) UNIQUE NOT NULL,
-  pass VARCHAR(255) NOT NULL
+    user INT AUTO_INCREMENT PRIMARY KEY,
+    fname VARCHAR(255) NOT NULL,
+    lname VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    pass VARCHAR(255) NOT NULL
 )
 ZZEOF;
         return $this->db_handle()->exec($sql);
     }
 
     // Inserts a new user $user into the DBUser table having password $pass.
-    public function insert($user, $email, $pass)
+    public function insert($fname, $lname, $email, $pass)
     {
         $entry = array(
-          ':user' => $user,
-          ':email' => $email,
-          ':pass' => $this->compute_password_hash($pass),
+            ':fname' => $fname,
+            ':lname' => $lname,
+            ':email' => $email,
+            ':pass' => $this->compute_password_hash($pass),
         );
 
-        $sql = 'INSERT INTO users (user, email, pass) VALUES (:user, :email, :pass)';
+        $sql = 'INSERT INTO users (fname, lname, email, pass) VALUES (:fname, :lname, :email, :pass)';
         $stmt = $this->db_handle()->prepare($sql);
         return $stmt->execute($entry);
     }
