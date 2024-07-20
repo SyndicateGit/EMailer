@@ -1,5 +1,5 @@
 <?php
-require_once('../common.php'); // Adjust path as necessary
+require_once('../common.php'); 
 
 function generateRandomString($length = 10) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -12,20 +12,19 @@ function generateRandomString($length = 10) {
 }
 
 $dbUser = new dbuser();
-$dbEmail = new dbEmail();
 
 // Fetch all current users to ensure foreign key constraints are met
-$currentUsers = $dbUser->lookup_all(); // This needs to return an array of user data
-$usernames = array_column($currentUsers, 'user'); // Extract usernames from the fetched data
+$currentUsers = $dbUser->lookup_all(); 
+$user = array_column($currentUsers, 'user'); 
 
 // Generate and insert mock users
 for ($i = 0; $i < 10; $i++) {
-    $username = generateRandomString(8);
+    $fname = generateRandomString(5);
+    $lname = generateRandomString(5);
     $email = generateRandomString(5) . '@example.com';
     $password = generateRandomString(12);
-    $dbUser->insert($username, $email, $password);
-    echo "Inserted user: $username with email $email\n";
-    $usernames[] = $username;
+    $dbUser->insert($fname, $lname, $email, $password); 
+    echo "Inserted user with email $email\n"; 
 }
 
 ?>

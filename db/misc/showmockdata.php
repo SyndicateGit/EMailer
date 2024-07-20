@@ -36,15 +36,20 @@ $emails = $dbEmail->lookup_all();
     <h1>Users</h1>
     <table>
         <tr>
-            <th>User</th>
+            <th>User ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
             <th>Email</th>
             <th>Password Hash</th>
         </tr>
         <?php foreach ($users as $user): ?>
         <tr>
             <td><?php echo htmlspecialchars($user['user']); ?></td>
+            <td><?php echo htmlspecialchars($user['fname']); ?></td>
+            <td><?php echo htmlspecialchars($user['lname']); ?></td>
             <td><?php echo htmlspecialchars($user['email']); ?></td>
             <td><?php echo htmlspecialchars($user['pass']); ?></td>
+        </tr>
         </tr>
         <?php endforeach; ?>
     </table>
@@ -52,6 +57,7 @@ $emails = $dbEmail->lookup_all();
     <h1>Emails</h1>
     <table>
         <tr>
+            <th>Email ID</th>
             <th>User</th>
             <th>To Email</th>
             <th>From Email</th>
@@ -62,6 +68,7 @@ $emails = $dbEmail->lookup_all();
         </tr>
         <?php foreach ($emails as $email): ?>
         <tr>
+            <td><?php echo htmlspecialchars($email['_id']); ?></td>
             <td><?php echo htmlspecialchars($email['user']); ?></td>
             <td><?php echo htmlspecialchars($email['to_email']); ?></td>
             <td><?php echo htmlspecialchars($email['from_email']); ?></td>
