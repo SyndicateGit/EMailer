@@ -30,6 +30,11 @@ ZZEOF;
     // Inserts a new user $user into the DBUser table having password $pass.
     public function insert($fname, $lname, $email, $pass)
     {
+        if($this->duplicate_email_check($email))
+        {
+            throw new Exception('Email already exists in the database.');
+        }
+        
         $entry = array(
             ':fname' => $fname,
             ':lname' => $lname,
@@ -41,6 +46,7 @@ ZZEOF;
         $stmt = $this->db_handle()->prepare($sql);
         return $stmt->execute($entry);
     }
+
 
     public function admin_destroy_db()
     {
@@ -150,6 +156,17 @@ ZZEOF;
         $stmt = $this->db_handle()->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll();
+    }
+
+    public function duplicate_email_check($email)
+    {
+        $entry = array( ':email' => $email ); 
+
+        $sql = 'SELECT * FROM users WHERE email = :email';
+        $stmt = $this->db_handle()->prepare($sql);
+        $stmt->execute([':email' => $email]);
+        $count = $stmt->fetchColumn();
+        return $count > 0;
     }
 }
 
