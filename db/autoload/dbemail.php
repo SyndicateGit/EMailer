@@ -54,6 +54,13 @@ ZZEOF;
         $sql = "DROP TABLE IF EXISTS emails";
         return $this->db_handle()->exec($sql);
     }
+
+    public function delete_by_id($id)
+    {
+        $sql = 'DELETE FROM emails WHERE _id = ?';
+        $stmt = $this->db_handle()->prepare($sql);
+        return $stmt->execute([$id]);
+    }
 }
 
 ?>
