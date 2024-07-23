@@ -34,25 +34,6 @@ const emailList = [
   },
 ];
 
-// Fetch user_id of type string from $_SESSION
-var globalUserId;
-
-function fetchUserId(callback){
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      var user_id = '' + this.responseText;
-      callback(user_id);
-    }
-  }
-  xmlhttp.open("GET", "fetchUserId.php", true);
-  xmlhttp.send();
-}
-
-fetchUserId(function(user_id){
-  globalUserId = user_id;
-});
-
 var globalFromEmail;
 
 function fetchFromEmail(callback) {
@@ -73,6 +54,9 @@ function callback(from_email){
 }
 
 fetchFromEmail(callback);
+
+var globalEmails;
+
 
 
 
