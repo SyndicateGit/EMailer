@@ -1,6 +1,6 @@
 <?php
 require_once('../../db/common.php');
-
+session_start();
 $fname = $_POST['fname'];
 $lname = $_POST['lname'];
 $email = $_POST['address'];
@@ -14,7 +14,9 @@ $dbUser = new dbuser();
 // Add the user to the database
 $dbUser->insert($fname, $lname,$email, $pass);
 
+$_SESSION['from_email'] = $email;
+
 // Redirect to the login page
-header('Location: ../Login/login.html');
+header('Location: ../ViewEmails/viewEmails.html');
 exit;
 ?>

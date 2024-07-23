@@ -34,6 +34,48 @@ const emailList = [
   },
 ];
 
+// Fetch user_id of type string from $_SESSION
+var globalUserId;
+
+function fetchUserId(callback){
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var user_id = '' + this.responseText;
+      callback(user_id);
+    }
+  }
+  xmlhttp.open("GET", "fetchUserId.php", true);
+  xmlhttp.send();
+}
+
+fetchUserId(function(user_id){
+  globalUserId = user_id;
+});
+
+var globalFromEmail;
+
+function fetchFromEmail(callback) {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var from_email = '' + this.responseText;
+      callback(from_email);
+    }
+  };
+  xmlhttp.open("GET", "fetchFromEmail.php", true);
+  xmlhttp.send();
+}
+
+function callback(from_email){
+  globalFromEmail = from_email;
+  console.log(globalFromEmail);
+}
+
+fetchFromEmail(callback);
+
+
+
 
 function generateEmailCards(emails){
   const emailsDiv = document.getElementById('emails');
