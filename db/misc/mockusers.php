@@ -27,4 +27,9 @@ for ($i = 0; $i < 10; $i++) {
     echo "Inserted user with email $email\n"; 
 }
 
+$testEmail = 'test@example.com';
+$testPassword = 'yourTestPassword123';
+$dbUser->insert('Test', 'User', $testEmail, $testPassword);
+echo "Inserted test user with email $testEmail and known password.\n";
+
 ?>

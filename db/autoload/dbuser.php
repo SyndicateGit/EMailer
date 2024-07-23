@@ -92,15 +92,15 @@ ZZEOF;
 
     // Checks that user $user exists and has password $pass. If
     // such is true, then TRUE is returned. Otherwise FALSE is returned.
-    public function check_user_pass($user, $pass)
+    public function check_user_pass($email, $pass)
     {
         // Create the entry to add...
-        $entry = array( ':user' => $user );
+        $entry = array( ':email' => $email );
 
         // Create the SQL prepared statement and insert the entry...
         try
         {
-            $sql = 'SELECT pass FROM users WHERE user = :user';
+            $sql = 'SELECT pass FROM users WHERE email = :email';
             $stmt = $this->db_handle()->prepare($sql);
             $stmt->execute($entry);
             $result = $stmt->fetchAll();
