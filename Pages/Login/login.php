@@ -1,7 +1,6 @@
 <?php
 require_once '../../db/common.php';
 require_once '../../db/autoload/dbuser.php';
-session_start();
 
 $userModel = new dbuser();
 
