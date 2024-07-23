@@ -21,6 +21,7 @@ CREATE TABLE emails (
     from_email VARCHAR(255) NOT NULL,
     email_body TEXT NOT NULL,
     email_subject VARCHAR(255) NOT NULL,
+    draft NOT NULL,
     date DATE NOT NULL,
     time TIME NOT NULL,
     FOREIGN KEY (user) REFERENCES users(user) ON DELETE CASCADE
@@ -29,11 +30,11 @@ ZZEOF;
         return $this->db_handle()->exec($sql);
     }
 
-    public function insert($user, $to_email, $from_email, $email_body, $email_subject, $date, $time)
+    public function insert($user, $to_email, $from_email, $email_body, $email_subject, $draft, $date, $time)
     {
-        $sql = 'INSERT INTO emails (user, to_email, from_email, email_body, email_subject, date, time) VALUES (?, ?, ?, ?, ?, ?, ?)';
+        $sql = 'INSERT INTO emails (user, to_email, from_email, email_body, email_subject, draft, date, time) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
         $stmt = $this->db_handle()->prepare($sql);
-        return $stmt->execute([$user, $to_email, $from_email, $email_body, $email_subject, $date, $time]);
+        return $stmt->execute([$user, $to_email, $from_email, $email_body, $email_subject, $draft, $date, $time]);
     }
 
 

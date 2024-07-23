@@ -30,8 +30,9 @@ foreach ($currentUsers as $user) {
     $email_subject = 'Test Email from ' . $user['user'];
     $date = date('Y-m-d');
     $time = date('H:i:s');
+    $draft = 0; // Not a draft
 
-    $dbEmail->insert($user['user'], $to_email, $from_email, $email_body, $email_subject, $date, $time);
+    $dbEmail->insert($user['user'], $to_email, $from_email, $email_body, $email_subject, $draft, $date, $time);
     echo "Inserted email from: $from_email to: $to_email\n";
 }
 ?>
