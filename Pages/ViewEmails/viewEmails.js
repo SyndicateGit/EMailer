@@ -67,8 +67,10 @@ function generateEmailCards(emails){
     return `
       <div class='email flex flex-col'>
         <div class='flex justify-between'>
-          <h3>FROM: ${globalFromEmail}</h3>
-          <h3>TO: ${email.to_email}</h3>
+          <div class='flex flex-col'>
+            <h3>FROM: ${globalFromEmail}</h3>
+            <h3>TO: ${email.to_email}</h3>
+          </div>
           <div class="flex justify-between">
             <button class='${"visible-"+ email.is_draft}' id='${"edit-"+ email._id}'>Edit</button>
             <button id='${"delete-"+ email._id}'>Delete</button>
