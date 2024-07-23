@@ -21,7 +21,7 @@ CREATE TABLE emails (
     from_email VARCHAR(255) NOT NULL,
     email_body TEXT NOT NULL,
     email_subject VARCHAR(255) NOT NULL,
-    draft NOT NULL,
+    draft INT NOT NULL,
     date DATE NOT NULL,
     time TIME NOT NULL,
     FOREIGN KEY (user) REFERENCES users(user) ON DELETE CASCADE
