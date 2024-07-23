@@ -12,7 +12,7 @@ $dbUser = new dbuser();
 //TODO: Check if the user already exists
 
 // Add the user to the database
-$dbUser->insert($email, $pass);
+$dbUser->insert($fname, $lname,$email, $pass);
 
 // Redirect to the login page
 header('Location: ../Login/login.html');
