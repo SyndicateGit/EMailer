@@ -147,6 +147,24 @@ ZZEOF;
         }
     }
 
+    public function email_lookup($email)
+    {
+        $entry = array( ':email' => $email );
+
+        try{
+            $sql = 'SELECT * FROM users WHERE email = :email';
+            $stmt = $this->db_handle()->prepare($sql);
+            $stmt->execute($entry);
+            $result = $stmt->fetchAll();
+            if (count($result) != 1)
+                return FALSE;
+            else
+                return $result[0];
+        } catch (PDOException $e) {
+            return FALSE;
+        }
+    }
+
     // Look up all users in the users table. This function permits
     // PDOExceptions to leak.
     public function lookup_all()

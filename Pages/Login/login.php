@@ -12,14 +12,14 @@ if (!empty($email) && !empty($password)) {
     $userIsValid = $userModel->check_user_pass($email, $password);
 
     if ($userIsValid) {
-        $_SESSION['user_id'] = $userModel->lookup($email)['user'];
+        $_SESSION['user_id'] = $userModel->email_lookup($email)['user'];
         $_SESSION['from_email'] = $email;
 
-        header('Location: /Pages/ViewEmails/viewEmails.html');
+        header('Location: ../ViewEmails/viewEmails.html');
         exit;
     } else {
         echo "Authentication failed\n";
-        header('Location: /Pages/Login/login.html');
+        header('Location: ../Login/login.html');
         exit;
     }
 }
