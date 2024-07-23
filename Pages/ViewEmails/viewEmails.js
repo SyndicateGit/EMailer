@@ -50,10 +50,10 @@ function fetchFromEmail(callback) {
 
 function callback(from_email){
   globalFromEmail = from_email;
-  console.log(globalFromEmail);
+  generateEmailCards(emailList);
+  addDeleteListener(emailList);
+  addEditListener(emailList);
 }
-
-fetchFromEmail(callback);
 
 var globalEmails;
 
@@ -67,7 +67,8 @@ function generateEmailCards(emails){
     return `
       <div class='email flex flex-col'>
         <div class='flex justify-between'>
-          <h3>${email.to_email}</h3>
+          <h3>FROM: ${globalFromEmail}</h3>
+          <h3>TO: ${email.to_email}</h3>
           <div class="flex justify-between">
             <button class='${"visible-"+ email.is_draft}' id='${"edit-"+ email._id}'>Edit</button>
             <button id='${"delete-"+ email._id}'>Delete</button>
@@ -114,10 +115,6 @@ function addEditListener(emails){
   });
 }
 
-generateEmailCards(emailList);
-addDeleteListener(emailList);
-addEditListener(emailList);
-
 const emailBodyConfig = {
   promotion: false,
   selector: '#email-body-editor',
@@ -130,3 +127,5 @@ const mainTinyMCEInit = {
 
 tinymce.init(mainTinyMCEInit);
 tinymce.init(emailBodyConfig);
+
+fetchFromEmail(callback);

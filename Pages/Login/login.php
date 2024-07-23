@@ -12,7 +12,13 @@ if (!empty($email) && !empty($password)) {
     $userIsValid = $userModel->check_user_pass($email, $password);
 
     if ($userIsValid) {
-        $_SESSION['user_id'] = $userModel->email_lookup($email)['user'];
+        $user = $userModel->email_lookup($email);
+        if($user == false){
+            echo "User not found\n";
+            header('Location: ../Login/login.html');
+            exit;
+        }
+        $_SESSION['user_id'] = $user['user'];
         $_SESSION['from_email'] = $email;
 
         header('Location: ../ViewEmails/viewEmails.html');

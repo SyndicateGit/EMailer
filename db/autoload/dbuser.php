@@ -147,19 +147,17 @@ ZZEOF;
         }
     }
 
+    // Return corresponding if email exists in the database, otherwise return FALSE
     public function email_lookup($email)
     {
-        $entry = array( ':email' => $email );
+        $entry = [':email' => $email];
 
         try{
             $sql = 'SELECT * FROM users WHERE email = :email';
             $stmt = $this->db_handle()->prepare($sql);
             $stmt->execute($entry);
-            $result = $stmt->fetchAll();
-            if (count($result) != 1)
-                return FALSE;
-            else
-                return $result[0];
+            $result = $stmt->fetch();
+            return $result;
         } catch (PDOException $e) {
             return FALSE;
         }
