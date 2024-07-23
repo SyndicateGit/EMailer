@@ -67,9 +67,12 @@ function fetchFromEmail(callback) {
   xmlhttp.send();
 }
 
-fetchFromEmail(function(from_email) {
+function callback(from_email){
   globalFromEmail = from_email;
-});
+  console.log(globalFromEmail);
+}
+
+fetchFromEmail(callback);
 
 
 
