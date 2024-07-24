@@ -124,7 +124,18 @@ function generateEmailCards(emails){
 }
 
 function handleDelete(emailId){
-  console.log(`Deleting email with ID: ${emailId}`);
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById('debug').innerHTML = this.responseText;
+      if(this.responseText.trim() == 'Email deleted'){
+        // Regenerate Emails to not have the deleted email.
+        fetchEmails(generateEmails);
+      }
+    }
+  };
+  xmlhttp.open("DELETE", "deleteEmail.php?id=" + emailId, true);
+  xmlhttp.send();
 }
 
 function handleEdit(emailId){
