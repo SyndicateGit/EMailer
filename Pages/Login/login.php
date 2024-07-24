@@ -20,7 +20,7 @@ if (!empty($email) && !empty($password)) {
         $_SESSION['user_id'] = $user['user'];
         $_SESSION['from_email'] = $email;
 
-        header('Location: ../ViewEmails/viewEmails.html');
+        header('Location: ../ViewEmails/ViewEmails.html');
         exit;
     } else {
         echo "Authentication failed\n";
