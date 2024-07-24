@@ -1,4 +1,5 @@
 const passInput = document.getElementById("password");
+const form = document.querySelector("form");
 
 const regex = {
     minLength: /^.{10,}$/,   // Minimum 10 characters
@@ -17,7 +18,15 @@ passInput.addEventListener("input", () => {
     }
 });
 
-function validPassword(password) {
+form.addEventListener("submit", (event) => {
+    if(!validatePassword(passInput.value)) {
+        event.preventDefault();
+        alert("The password you have entered does not meet the requirements. Try again.");
+        return false;
+    }
+});
+
+function validatePassword(password) {
     for(const key in regex) {
         if(!regex[key].test(password)) {
             return false;

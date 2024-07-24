@@ -9,7 +9,14 @@ $pass = $_POST['password'];
 
 $dbUser = new dbuser();
 
-//TODO: Check if the user already exists
+//Check if the user already exists
+$email .= "@example.com"; 
+if($dbUser->email_lookup($email)) {
+    $_SESSION['signupError'] = "User already exists.";
+    header('Location: ./signup.html?fname=' . urlencode($fname) . '&lname=' 
+    . urlencode($lname) . '&address=' . urlencode($_POST['address']));
+    exit;
+}
 
 // Add the user to the database
 $dbUser->insert($fname, $lname,$email, $pass);
