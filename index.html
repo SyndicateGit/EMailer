@@ -4,11 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EMailer</title>
+  <link rel="stylesheet" href="Pages/Login/login.module.css" />
+  <style>
+    #navbar {
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      background-color: #25433c; 
+      padding: 10px;
+      list-style: none; 
+    }
+    #navbar a {
+      color: #ffffff; 
+      margin: 0 20px; 
+      padding: 10px 20px; 
+      text-decoration: none; 
+      border-radius: 5px; 
+      transition: background-color 0.3s; 
+    }
+    #navbar a:hover {
+      background-color: #172925; 
+    }
+  </style>
 </head>
 <body>
-  <a href="Pages/CreatEmail/createEmail.html">Create Email</a>
-  <a href="Pages/ViewEmails/viewEmails.html">View Email</a>
-  <a href="Pages/Login/login.html">Login</a>
-  <a href="Pages/Signup/signup.html">Sign Up</a>
+  <div id="header"></div>
+  <div id="navbar">
+    <a href="Pages/CreateEmail/createEmail.html">Create Email</a>
+    <a href="Pages/ViewEmails/viewEmails.html">View Email</a>
+    <a href="Pages/Login/login.html">Login</a>
+    <a href="Pages/Signup/signup.html">Sign Up</a>
+  </div>
+  <main>
+    <!-- Main content goes here -->
+  </main>
+  <div id="footer"></div>
+  <script src="SharedComponents/header.js"></script>
+  <script src="SharedComponents/footer.js"></script>
 </body>
 </html>
