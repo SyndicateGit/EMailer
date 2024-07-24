@@ -4,18 +4,68 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us</title>
+    <link rel="stylesheet" href="./contactus.module.css" />
     <link rel="stylesheet" href="../template_css.module.css" />
   </head>
-  <body>
+  <body class="contact-us-body">
     <div id="header"></div>
     <div id="navbar"></div>
     <main>
-      <!-- Page content goes here -->
-      Contact Us
+      <div class="contact-us-container">
+        <h1>Contact Us</h1>
+        <form id="contactForm" class="contact-us-form">
+          <label for="fromEmail">From Email:</label>
+          <input type="email" id="fromEmail" name="fromEmail" required />
+
+          <label for="body">Message:</label>
+          <textarea id="body" name="body" rows="6" required></textarea>
+
+          <button type="submit">Send</button>
+        </form>
+        <p id="errorMessage" class="contact-us-error-message"></p>
+      </div>
     </main>
     <div id="footer"></div>
     <script src="../../SharedComponents/header.js"></script>
     <script src="../../SharedComponents/navbar.js"></script>
     <script src="../../SharedComponents/footer.js"></script>
+
+    <script>
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (event) {
+          const fromEmail = document.getElementById("fromEmail").value;
+          const body = document.getElementById("body").value;
+          const errorMessage = document.getElementById("errorMessage");
+
+          if (!fromEmail || !body) {
+            errorMessage.textContent = "Both email and message are required.";
+            event.preventDefault();
+          } else {
+            errorMessage.textContent = "";
+          }
+        });
+
+      // Debugging: Check if the JavaScript files are loaded
+      window.addEventListener("load", function () {
+        if (typeof loadHeader === "function") {
+          console.log("Header script loaded.");
+        } else {
+          console.error("Header script not loaded.");
+        }
+
+        if (typeof loadNavbar === "function") {
+          console.log("Navbar script loaded.");
+        } else {
+          console.error("Navbar script not loaded.");
+        }
+
+        if (typeof loadFooter === "function") {
+          console.log("Footer script loaded.");
+        } else {
+          console.error("Footer script not loaded.");
+        }
+      });
+    </script>
   </body>
 </html>
