@@ -46,6 +46,17 @@ ZZEOF;
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function lookup_by_user($user_id){
+        try{
+            $sql = 'SELECT * FROM emails WHERE user = ?';
+            $stmt = $this->db_handle()->prepare($sql);
+            $stmt->execute([$user_id]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
     public function admin_destroy_db()
     {
         if (!$this->admin_permit_create_drop()) {

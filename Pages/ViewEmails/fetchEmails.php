@@ -1,5 +1,8 @@
 <?php
 require_once('../../db/common.php');
+require_once('../../db/autoload/dbemail.php');
+
+$dbEmail = new dbemail();
 
 $user_id = $_SESSION['user_id'];
 
@@ -8,7 +11,14 @@ if($user_id == null){
     exit;
 }
 
-echo($user_id);
+$Emails = $dbEmail->lookup_by_user($user_id);
+
+if($Emails == false){
+    echo("No emails found");
+    exit;
+}
+
+echo json_encode($Emails);
 
 exit;
 ?>

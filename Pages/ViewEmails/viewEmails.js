@@ -42,13 +42,15 @@ function fetchFromEmail(callback) {
     if (this.readyState == 4 && this.status == 200) {
       var from_email = '' + this.responseText;
       callback(from_email);
+    } else{
+      console.log("Error fetching from email");
     }
   };
   xmlhttp.open("GET", "fetchFromEmail.php", true);
   xmlhttp.send();
 }
 
-function callback(from_email){
+function callbackFromEmail(from_email){
   globalFromEmail = from_email;
   generateEmailCards(emailList);
   addDeleteListener(emailList);
@@ -57,6 +59,30 @@ function callback(from_email){
 
 var globalEmails;
 
+function fetchEmails(callback){
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if ('' + this.readyState == 4 && this.status == 200) {
+      try{
+        var emails = JSON.parse(this.responseText);
+        callback(emails);
+      } catch(e){
+        console.log(e);
+        document.getElementById('debug').innerHTML = this.responseText;
+      }
+      
+    } else {
+      console.log("Error fetching emails");
+    }
+  };
+  xmlhttp.open("GET", "fetchEmails.php", true);
+  xmlhttp.send();
+}
+
+function callbackEmails(emails){
+  globalEmails = emails;
+  console.log(globalEmails);
+}
 
 
 
@@ -130,4 +156,7 @@ const mainTinyMCEInit = {
 tinymce.init(mainTinyMCEInit);
 tinymce.init(emailBodyConfig);
 
-fetchFromEmail(callback);
+fetchFromEmail(callbackFromEmail);
+fetchEmails(callbackEmails);
+
+
