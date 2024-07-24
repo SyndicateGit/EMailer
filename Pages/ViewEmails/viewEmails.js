@@ -36,12 +36,12 @@ const emailList = [
 
 var globalFromEmail;
 
-function fetchFromEmail(callback) {
+function fetchEmailStuff(callback) {
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       var from_email = '' + this.responseText;
-      callback(from_email);
+      setFromField(from_email);
     } else{
       console.log("Error fetching from email");
     }
@@ -50,11 +50,9 @@ function fetchFromEmail(callback) {
   xmlhttp.send();
 }
 
-function callbackFromEmail(from_email){
+function setFromField(from_email){
   globalFromEmail = from_email;
-  generateEmailCards(emailList);
-  addDeleteListener(emailList);
-  addEditListener(emailList);
+  fetchEmails(generateEmails);
 }
 
 var globalEmails;
@@ -66,11 +64,11 @@ function fetchEmails(callback){
       try{
         if(this.responseText.trim() == 'No emails found'){
           document.getElementById('debug').innerHTML = this.responseText;
-          callback([]);
+          generateEmails([]);
           return;
         }
         var emails = JSON.parse(this.responseText.trim());
-        callback(emails);
+        generateEmails(emails);
       } catch(e){
         console.log(e);
         document.getElementById('debug').innerHTML = this.responseText;
@@ -85,9 +83,11 @@ function fetchEmails(callback){
   xmlhttp.send();
 }
 
-function callbackEmails(emails){
+function generateEmails(emails){
   globalEmails = emails;
-  console.log(globalEmails);
+  generateEmailCards(globalEmails);
+  addDeleteListener(globalEmails);
+  addEditListener(globalEmails);
 }
 
 
@@ -110,7 +110,7 @@ function generateEmailCards(emails){
         </div>
         
         
-        <h4>${email.email_subject}</h4>
+        <h4>Subject: ${email.email_subject}</h4>
         <h5 class='${"visible-"+ email.is_draft}'>Draft</h5>
         <p>${email.email_body}</p>
         <div class='flex flex-1 justify-between items-end'>
@@ -162,7 +162,7 @@ const mainTinyMCEInit = {
 tinymce.init(mainTinyMCEInit);
 tinymce.init(emailBodyConfig);
 
-fetchFromEmail(callbackFromEmail);
-fetchEmails(callbackEmails);
+fetchEmailStuff(setFromField);
+
 
 
