@@ -23,6 +23,6 @@ $dbUser->insert($fname, $lname,$email, $pass);
 $_SESSION['from_email'] = $email;
 
 // Redirect to the login page
-header('Location: ../ViewEmails/viewEmails.html');
+header('Location: ../Login/login.html');
 exit;
 ?>
