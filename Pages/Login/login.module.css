@@ -16,10 +16,9 @@ body {
 main {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
   height: 74%;
-  padding-top: 15%; 
 }
 
 * {
@@ -75,7 +74,9 @@ button:hover, .button:hover {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 5%;
+  height: auto;
+  padding-top: 0;
+  background-color: #25433c;
 }
 
 
@@ -91,10 +92,6 @@ button:hover, .button:hover {
   color: var(--shared-components-secondary-color);
 }
 
-#navbar {
-  padding-top: 0;
-  background-color: #25433c;
-}
 #footer {
   width: 100%;
   height: 5%;
@@ -115,4 +112,3 @@ button:hover, .button:hover {
   line-height: inherit;
   color: inherit;
 }
-
