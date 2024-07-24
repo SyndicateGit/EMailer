@@ -64,11 +64,17 @@ function fetchEmails(callback){
   xmlhttp.onreadystatechange = function() {
     if ('' + this.readyState == 4 && this.status == 200) {
       try{
-        var emails = JSON.parse(this.responseText);
+        if(this.responseText.trim() == 'No emails found'){
+          document.getElementById('debug').innerHTML = this.responseText;
+          callback([]);
+          return;
+        }
+        var emails = JSON.parse(this.responseText.trim());
         callback(emails);
       } catch(e){
         console.log(e);
         document.getElementById('debug').innerHTML = this.responseText;
+        callback([]);
       }
       
     } else {
