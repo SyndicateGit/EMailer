@@ -127,7 +127,7 @@ ZZEOF;
     public function lookup($user)
     {
         // Create the entry to add...
-        $entry = array( ':user' => $user );
+        $entry = [':user' => $user ];
 
         // Create the SQL prepared statement and insert the entry...
         try
@@ -135,11 +135,8 @@ ZZEOF;
             $sql = 'SELECT * FROM users WHERE user = :user';
             $stmt = $this->db_handle()->prepare($sql);
             $stmt->execute($entry);
-            $result = $stmt->fetchAll();
-            if (count($result) != 1)
-                return FALSE;
-            else
-                return $result[0];
+            $result = $stmt->fetch();
+            return $result;
         }
         catch (PDOException $e)
         {

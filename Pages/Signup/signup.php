@@ -10,7 +10,6 @@ $pass = $_POST['password'];
 $dbUser = new dbuser();
 
 //Check if the user already exists
-$email .= "@example.com"; 
 if($dbUser->email_lookup($email)) {
     $_SESSION['signupError'] = "User already exists. Try again";
     header('Location: ./signup.html?fname=' . urlencode($fname) . '&lname=' 
@@ -24,6 +23,6 @@ $dbUser->insert($fname, $lname,$email, $pass);
 $_SESSION['from_email'] = $email;
 
 // Redirect to the login page
-header('Location: ../ViewEmails/viewEmails.html');
+header('Location: ../Login/login.html');
 exit;
 ?>

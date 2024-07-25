@@ -16,14 +16,22 @@ if($user_id == null){
     exit;
 }
 
-$Emails = $dbEmail->lookup_by_user($user_id);
 
-if($Emails == false){
-    echo("No emails found");
+$emailId = $_REQUEST['id'];
+
+if($emailId == null){
+    echo("No email found");
     exit;
 }
 
-echo json_encode($Emails);
+try{
+    $dbEmail->delete_by_id($emailId);
+    echo "Email deleted";
+} catch (Exception $e){
+    echo "Error deleting email";
+}
+
+echo $emailId;
 
 exit;
 ?>
