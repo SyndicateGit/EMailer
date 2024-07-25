@@ -1,5 +1,6 @@
 const passInput = document.getElementById("password");
 const form = document.querySelector("form");
+const errorModal = document.getElementById("errorModal");
 
 const regex = {
     minLength: /^.{10,}$/,   // Minimum 10 characters
@@ -24,6 +25,8 @@ form.addEventListener("submit", (event) => {
         alert("The password you have entered does not meet the requirements. Try again.");
         return false;
     }
+    errorModal.classList.remove("visible");
+    errorModal.textContent = "";
 });
 
 function validatePassword(password) {
@@ -34,5 +37,20 @@ function validatePassword(password) {
     }
     return true;
 }
+
+window.onload = function() {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        const response = this.responseText;
+        if(response) {
+            errorModal.textContent = response;
+            errorModal.classList.add("visible");
+        }
+      }
+    };
+    xmlhttp.open("GET", "userError.php", true);
+    xmlhttp.send();
+}; 
 
 

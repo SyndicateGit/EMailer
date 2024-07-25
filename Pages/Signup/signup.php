@@ -12,7 +12,7 @@ $dbUser = new dbuser();
 //Check if the user already exists
 $email .= "@example.com"; 
 if($dbUser->email_lookup($email)) {
-    $_SESSION['signupError'] = "User already exists.";
+    $_SESSION['signupError'] = "User already exists. Try again";
     header('Location: ./signup.html?fname=' . urlencode($fname) . '&lname=' 
     . urlencode($lname) . '&address=' . urlencode($_POST['address']));
     exit;

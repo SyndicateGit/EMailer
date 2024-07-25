@@ -204,3 +204,23 @@ button:hover {
     text-decoration: none;
 }
 
+#errorModal {
+    width: 40%;
+    height: 10%;
+    background:#FFF;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #DF0334;
+    display: none;
+}
+
+#errorModal.visible {
+    display: block;
+}
+
