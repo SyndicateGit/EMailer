@@ -139,6 +139,17 @@ function handleDelete(emailId){
 }
 
 function handleEdit(emailId){
+  document.getElementById('edit-email-form').removeAttribute('hidden');
+  document.getElementById('email-id').value = emailId;
+  const email = globalEmails.find(email => email._id == emailId.toString());
+
+  const emailTo = document.getElementById('email-to');
+  emailTo.value = email.to_email;
+  const emailSubject = document.getElementById('email-subject');
+  emailSubject.value = email.email_subject;
+  const emailBody = document.getElementById('email-body-editor');
+  emailBody.value = email.email_body;
+  tinymce.get('email-body-editor').setContent(email.email_body);
   console.log(`Editing email with ID: ${emailId}`);
 }
 

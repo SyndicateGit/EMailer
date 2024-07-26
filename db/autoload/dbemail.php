@@ -37,6 +37,12 @@ ZZEOF;
         return $stmt->execute([$user, $to_email, $from_email, $email_body, $email_subject, $draft, $date, $time]);
     }
 
+    public function updateEmail($id, $to_email, $from_email, $email_body, $email_subject, $draft, $date, $time)
+    {
+        $sql = 'UPDATE emails SET to_email = ?, from_email = ?, email_body = ?, email_subject = ?, draft = ?, date = ?, time = ? WHERE _id = ?';
+        $stmt = $this->db_handle()->prepare($sql);
+        return $stmt->execute([$to_email, $from_email, $email_body, $email_subject, $draft, $date, $time, $id]);
+    }
 
     public function lookup_all()
     {

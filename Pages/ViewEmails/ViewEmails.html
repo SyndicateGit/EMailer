@@ -21,13 +21,14 @@
       </div>
       <div class="flex full">
         <div id="emails"></div>
-        <form id="edit-email-form" action="editEmail.php" method="post">
+        <form id="edit-email-form" action="editEmail.php" method="post" type="text" hidden>
+          <input type="text" name="email-id" id="email-id" hidden>
           <div class="editor-row single-input-field" id="recipient-row">
-            <input type="text" class="email-field input" placeholder="Recipient">
+            <input type="text" class="email-field input" id="email-to" placeholder="Recipient">
           </div>
           <div class="editor-row single-input-field" id="subject-row">
             <!-- <textarea id="email-subject-field" rows="1" placeholder="Add a subject"></textarea> -->
-            <input type="text" class="email-field input" placeholder="Subject">
+            <input type="text" class="email-field input" id="email-subject" placeholder="Subject">
           </div>
           <div class="editor-row email-body-div">
             <textarea name="email-body" id="email-body-editor" class="input" placeholder="Write your email"></textarea>
