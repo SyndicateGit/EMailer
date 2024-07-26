@@ -16,7 +16,12 @@ if($user_id == null){
     exit;
 }
 
-$Emails = $dbEmail->lookup_by_user($user_id);
+try{
+    $Emails = $dbEmail->lookup_by_user($user_id);
+} catch (Exception $e){
+    echo "Error fetching emails";
+    exit;
+}
 
 if($Emails == false){
     echo("No emails found");

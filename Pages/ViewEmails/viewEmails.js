@@ -173,6 +173,21 @@ const mainTinyMCEInit = {
 tinymce.init(mainTinyMCEInit);
 tinymce.init(emailBodyConfig);
 
+function darkMode(boolean){
+  if(boolean){
+    localStorage.setItem('darkMode', 'true');
+    document.body.classList.add('dark');
+  } else {
+    localStorage.setItem('darkMode', 'false');
+    document.body.classList.remove('dark');
+  }
+}
+
+document.getElementById('darkmode').addEventListener('change', (event) => {
+  console.log(event.target.checked);
+  darkMode(event.target.checked);
+});
+
 fetchEmailStuff(setFromField);
 
 
