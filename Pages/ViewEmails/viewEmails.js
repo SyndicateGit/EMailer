@@ -188,6 +188,12 @@ document.getElementById('darkmode').addEventListener('change', (event) => {
   darkMode(event.target.checked);
 });
 
+const darkMode = localStorage.getItem('darkMode');
+if(darkMode == 'true'){
+  document.body.classList.add('dark');
+  document.getElementById('darkmode').checked = true;
+}
+
 fetchEmailStuff(setFromField);
 
 
