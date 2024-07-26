@@ -105,3 +105,8 @@ main {
 #navbar .navbar-inner .navbar-pages-container p {
   font-weight: bold;
 }
+
+.dark{
+  background-color: #25433c;
+  color: white;
+}

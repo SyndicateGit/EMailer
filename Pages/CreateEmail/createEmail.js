@@ -10,3 +10,8 @@ const mainTinyMCEInit = {
 
 tinymce.init(mainTinyMCEInit);
 tinymce.init(emailBodyConfig);
+
+const darkmode = localStorage.getItem('darkMode');
+if(darkmode == 'true'){
+  document.body.classList.add('dark');
+}
