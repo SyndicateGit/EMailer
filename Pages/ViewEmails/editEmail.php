@@ -6,11 +6,11 @@ if (!isset($_SESSION['user_id'])) {
   header('Location: ../Login/login.html');
   exit;
 }
-$emailId = $_POST['email-id'];
-$to_email = $_POST['to-email'];
-$email_subject = $_POST['email-subject'];
-$email_body = $_POST['email-body'];
-$from_email = $_SESSION['from_email'];
+$emailId = strip_tags($_POST['email-id']);
+$to_email = strip_tags($_POST['to-email']);
+$email_subject = strip_tags($_POST['email-subject']);
+$email_body = strip_tags($_POST['email-body']);
+$from_email = strip_tags($_SESSION['from_email']);
 
 # TODO: Get rid of all string inside <>
 
@@ -20,7 +20,6 @@ $user = $_SESSION['user_id'];
 $date = date('Y-m-d');
 $time = date('H:i:s');
 $draft = 0; // Not a draft
-
 
 
 try{
