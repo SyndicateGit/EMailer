@@ -188,8 +188,8 @@ document.getElementById('darkmode').addEventListener('change', (event) => {
   darkMode(event.target.checked);
 });
 
-const darkMode = localStorage.getItem('darkMode');
-if(darkMode == 'true'){
+const darkmode = localStorage.getItem('darkMode');
+if(darkmode == 'true'){
   document.body.classList.add('dark');
   document.getElementById('darkmode').checked = true;
 }
