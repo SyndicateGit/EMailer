@@ -23,15 +23,23 @@
         <div id="emails"></div>
         <form id="edit-email-form" action="editEmail.php" method="post">
           <div class="editor-row single-input-field" id="recipient-row">
-            <input type="text" class="email-field" placeholder="Recipient">
+            <input type="text" class="email-field input" placeholder="Recipient">
           </div>
           <div class="editor-row single-input-field" id="subject-row">
             <!-- <textarea id="email-subject-field" rows="1" placeholder="Add a subject"></textarea> -->
-            <input type="text" class="email-field" placeholder="Subject">
+            <input type="text" class="email-field input" placeholder="Subject">
           </div>
           <div class="editor-row email-body-div">
-            <textarea name="email-body" id="email-body-editor" placeholder="Write your email"></textarea>
+            <textarea name="email-body" id="email-body-editor" class="input" placeholder="Write your email"></textarea>
           </div>
+          <button type="submit" class="save-edit-button" formaction="./editEmail.php"  id="edit-button" >
+            <i class="button-icon"><img src="send.svg" alt=""></i>
+              Save Edit
+          </button>
+          <button type="button" class="email-button" id="cancel-edit-button" >
+            <i class="button-icon"><img src="send.svg" alt=""></i>
+              Cancel
+          </button>
         </form>
         <div id="debug"></div>
       </div>

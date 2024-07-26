@@ -188,6 +188,11 @@ document.getElementById('darkmode').addEventListener('change', (event) => {
   darkMode(event.target.checked);
 });
 
+document.getElementById('cancel-edit-button').addEventListener('click', () => {
+  document.forms[0].reset();
+  document.getElementById('edit-email-form').setAttribute('hidden', true);
+});
+
 const darkmode = localStorage.getItem('darkMode');
 if(darkmode == 'true'){
   document.body.classList.add('dark');
