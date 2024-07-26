@@ -12,6 +12,8 @@ $email_subject = $_POST['email-subject'];
 $email_body = $_POST['email-body'];
 $from_email = $_SESSION['from_email'];
 
+# TODO: Get rid of all string inside <>
+
 
 $dbEmail = new dbemail();
 

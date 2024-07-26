@@ -19,11 +19,12 @@ if (!empty($email) && !empty($password)) {
         }
         $_SESSION['user_id'] = $user['user'];
         $_SESSION['from_email'] = $email;
-
+        $_SESSION['errorMessage'] = null;
         header('Location: ../ViewEmails/ViewEmails.html');
         exit;
     } else {
         echo "Authentication failed\n";
+        $_SESSION["errorMessage"]="Authentication failed";
         header('Location: ../Login/login.html');
         exit;
     }
