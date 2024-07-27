@@ -2,31 +2,33 @@
 require_once '../../db/common.php';
 require_once '../../db/autoload/dbuser.php';
 
-$userModel = new dbuser();
+header('Content-Type: application/json');
 
+$userModel = new dbuser();
 $email = $_POST['email'];
 $password = $_POST['password'];
+
+$response = array();
 
 if (!empty($email) && !empty($password)) {
     $userIsValid = $userModel->check_user_pass($email, $password);
 
     if ($userIsValid) {
         $user = $userModel->email_lookup($email);
-        if($user == false){
-            echo "User not found\n";
-            header('Location: ../Login/login.html');
-            exit;
+        if ($user == false) {
+            $response['success'] = false;
+        } else {
+            $_SESSION['user_id'] = $user['user'];
+            $_SESSION['from_email'] = $email;
+            $_SESSION['errorMessage'] = null;
+            $response['success'] = true;
+            $response['redirect'] = '../ViewEmails/ViewEmails.html';
         }
-        $_SESSION['user_id'] = $user['user'];
-        $_SESSION['from_email'] = $email;
-        $_SESSION['errorMessage'] = null;
-        header('Location: ../ViewEmails/ViewEmails.html');
-        exit;
     } else {
-        echo "Authentication failed\n";
-        $_SESSION["errorMessage"]="Authentication failed";
-        header('Location: ../Login/login.html');
-        exit;
+        $response['success'] = false;
+        $response['message'] = "Email and Password combination is incorrect";
+        $_SESSION["errorMessage"] = "Authentication failed";
     }
 }
-?>
+
+echo json_encode($response);
