@@ -10,19 +10,19 @@ The project is configured through the `config.php` file, which sets up the datab
 - Navigate to Account Manager > Databases
 - Create a new database, keep track of your database name, and password.
 - Modify the `config.php` file to include your database details:
-    ```php
-    $CFG = new stdClass();
-    $CFG->base_url = 'your website URL';
-    $CFG->site_wide_password_salt = 'your chosen password salt';
-    $CFG->dbtype = 'mysql';
-    $CFG->dbhost = 'localhost';
-    $CFG->dbname = 'your_database_name';
-    $CFG->dbuser = 'your_username';
-    $CFG->dbpass = 'your_password';
-    $CFG->db_admin_permit_create_drop = TRUE;
-    $CFG->db_admin_only_allow_ip = 'your_ip_address (while connected to GlobalProtect VPN)';
-    $CFG->emailaddr_support = 'your@adminEmail.com';
-    ```
+    ```php
+    $CFG = new stdClass();
+    $CFG->base_url = 'your website URL';
+    $CFG->site_wide_password_salt = 'your chosen password salt';
+    $CFG->dbtype = 'mysql';
+    $CFG->dbhost = 'localhost';
+    $CFG->dbname = 'your_database_name';
+    $CFG->dbuser = 'your_username';
+    $CFG->dbpass = 'your_password';
+    $CFG->db_admin_permit_create_drop = TRUE;
+    $CFG->db_admin_only_allow_ip = 'your_ip_address (while connected to GlobalProtect VPN)';
+    $CFG->emailaddr_support = 'your@adminEmail.com';
+    ```
 ## Setting Up Database Tables
 Use the PHP scripts provided to set up the initial structure of your database. Once the database is set up, you can run the scripts to insert mock data for testing purposes.
 
