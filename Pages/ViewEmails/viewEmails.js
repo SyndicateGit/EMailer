@@ -104,14 +104,14 @@ function generateEmailCards(emails){
             <h3>TO: ${email.to_email}</h3>
           </div>
           <div class="flex justify-between">
-            <button class='${"visible-"+ email.is_draft}' id='${"edit-"+ email._id}'>Edit</button>
+            <button class='${"visible-"+ email.draft}' id='${"edit-"+ email._id}'>Edit</button>
             <button id='${"delete-"+ email._id}'>Delete</button>
           </div>
         </div>
         
         
         <h4>Subject: ${email.email_subject}</h4>
-        <h5 class='${"visible-"+ email.is_draft}'>Draft</h5>
+        <h5 class='${"visible-"+ email.draft}'>Draft</h5>
         <p>${email.email_body}</p>
         <div class='flex flex-1 justify-between items-end'>
           <p>${email.date}</p>
