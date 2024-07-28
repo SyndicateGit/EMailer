@@ -9,6 +9,7 @@ const regex = {
     digit: /\d/              // At least one digit (number)
 };
 
+// Add event listener to the password input to check if the input has text
 passInput.addEventListener("input", () => {
     const password = passInput.value;
 
@@ -19,6 +20,7 @@ passInput.addEventListener("input", () => {
     }
 });
 
+// Add event listener to the form to validate the password
 form.addEventListener("submit", (event) => {
     errorBox.classList.remove("visible");
     errorBox.textContent = "";
@@ -39,6 +41,7 @@ function validatePassword(password) {
     return true;
 }
 
+// Check for errors on page load
 window.onload = function() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
@@ -55,10 +58,12 @@ window.onload = function() {
 }; 
 
 
+// Apply dark mode setting
 function applyDarkMode(){
     const darkmode = localStorage.getItem('darkMode');
     if(darkmode == 'true'){
       document.body.classList.add('dark');
     }
   }
-  applyDarkMode();
+  
+applyDarkMode();

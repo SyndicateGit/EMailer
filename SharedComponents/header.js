@@ -1,4 +1,3 @@
-
 function createHeader() {
   const header = document.getElementById("header");
   const headerInner = document.createElement("div");

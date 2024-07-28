@@ -1,3 +1,4 @@
+// Add event listener to the contact form to handle form submission
 document.getElementById("contactForm").addEventListener("submit", function (event) {
   event.preventDefault();
 

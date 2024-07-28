@@ -1,3 +1,4 @@
+//Add event listener to the login form to handle form submission
 document
   .getElementById("loginForm")
   .addEventListener("submit", function (event) {
@@ -26,10 +27,11 @@ document
       .catch((error) => console.error("Error:", error));
   });
 
-  function applyDarkMode(){
-    const darkmode = localStorage.getItem('darkMode');
-    if(darkmode == 'true'){
-      document.body.classList.add('dark');
-    }
+// Apply dark mode setting
+function applyDarkMode(){
+  const darkmode = localStorage.getItem('darkMode');
+  if(darkmode == 'true'){
+    document.body.classList.add('dark');
   }
-  applyDarkMode();
+}
+applyDarkMode();

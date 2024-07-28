@@ -1,8 +1,10 @@
+// Elements
 const emailSubject = document.getElementById("email-subject");
 const emailRecipient = document.getElementById("to-email");
 const form = document.querySelector("form");
 const errorModal = document.getElementById("error-modal");
 
+// TinyMCE configuration
 const emailBodyConfig = {
     promotion: false,
     selector: '#email-body-editor',
@@ -16,11 +18,13 @@ const mainTinyMCEInit = {
 tinymce.init(mainTinyMCEInit);
 tinymce.init(emailBodyConfig);
 
+// Apply dark mode setting
 const darkmode = localStorage.getItem('darkMode');
 if(darkmode == 'true'){
   document.body.classList.add('dark');
 };
 
+// On page load check for errors and prepopulate fields with URL params
 window.onload = function() {
     // Prepopulate fields with URL params
     let params = new URLSearchParams(document.location.search);
@@ -47,6 +51,7 @@ window.onload = function() {
       if (xhr.readyState === xhr.DONE) {
         if (xhr.status === 200) {
           const response = xhr.responseText;
+          // Redirect to login page if not logged in
           if(response.trim() == 'Please login to view this page'){
             window.location.href = '../Login/login.html';
           }

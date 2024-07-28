@@ -30,6 +30,7 @@ function buildNavbarPages(pages) {
     }
   }
 
+  // Logout button
   const logoutElement = document.createElement("a");
   logoutElement.href = "../Logout/logout.php";
   logoutElement.textContent = "Logout";

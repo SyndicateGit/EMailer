@@ -10,6 +10,7 @@ $password = $_POST['password'];
 
 $response = array();
 
+// Validate email and password
 if (!empty($email) && !empty($password)) {
     $userIsValid = $userModel->check_user_pass($email, $password);
 
@@ -18,6 +19,7 @@ if (!empty($email) && !empty($password)) {
         if ($user == false) {
             $response['success'] = false;
         } else {
+            // Set session variables upon successful validation
             $_SESSION['user_id'] = $user['user'];
             $_SESSION['from_email'] = $email;
             $_SESSION['errorMessage'] = null;
@@ -25,6 +27,7 @@ if (!empty($email) && !empty($password)) {
             $response['redirect'] = '../ViewEmails/ViewEmails.html';
         }
     } else {
+        // Set error message upon failed validation
         $response['success'] = false;
         $response['message'] = "Email and Password combination is incorrect";
         $_SESSION["errorMessage"] = "Authentication failed";
