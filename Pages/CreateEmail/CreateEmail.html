@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Emailer</title>
-<script src="../../SharedComponents/footer.js"></script>  <link rel="stylesheet" href="createEmail.module.css">
   <script src="js/tinymce/tinymce.min.js" type="application/javascript"></script>
   <link rel="stylesheet" href="../template_css.module.css">
 </head>
@@ -18,29 +17,33 @@
         <h1>Create a message</h1>
       </div>
       <form id="send-email-form" action="./createEmail.php" method="post">
+        <div class="editor-row" id="error-modal">Errors</div>
         <div class="editor-row" id="button-row">
           <div class="email-button-group">
             <button type="submit" formaction="./createDraftEmail.php" class="email-button" id="draft-button" >
               Save as draft
             </button>
             <button type="submit" class="email-button" formaction="./createEmail.php"  id="send-button" >
-            <i class="button-icon"><img src="send.svg" alt=""></i>
               Send
             </button>
           </div>
         </div>
         <div class="editor-row single-input-field" id="recipient-row">
-          <input type="text" name="to-email" class="to-email-field" id="to-email" placeholder="Recipient">
+          <p id="recipient-validation-modal" class="validation-modal" >&#9888; A recipient email address is required</p>
+          <input type="email" name="to-email" class="email-field" id="to-email" placeholder="Recipient"/>
         </div>
         <div class="editor-row single-input-field" id="subject-row">
-          <input type="text" name="email-subject" class="email-field" id="email-subject" placeholder="Subject">
+          <p id="subject-validation-modal"class ="validation-modal" >&#9888; A subject line is required</p>
+          <input type="text" name="email-subject" class="email-field" id="email-subject" placeholder="Subject" />
         </div>
         <div class="editor-row email-body-div">
+          <p id="body-validation-modal"class ="validation-modal" >&#9888; Email body cannot be empty.</p>
           <textarea name="email-body" id="email-body-editor" placeholder="Write your email"></textarea>
         </div>
       </form>
     </div>
   </main>
+  <div id="footer"></div>
   <script src="../../SharedComponents/header.js"></script>
   <script src="../../SharedComponents/navbar.js"></script>
   <script src="../../SharedComponents/footer.js"></script>
