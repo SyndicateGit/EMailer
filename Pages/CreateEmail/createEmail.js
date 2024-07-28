@@ -47,6 +47,9 @@ window.onload = function() {
       if (xhr.readyState === xhr.DONE) {
         if (xhr.status === 200) {
           const response = xhr.responseText;
+          if(response.trim() == 'Please login to view this page'){
+            window.location.href = '../Login/login.html';
+          }
           if(response.length > 0) {
             errorModal.innerHTML = response;
             errorModal.style.visibility = "visible";

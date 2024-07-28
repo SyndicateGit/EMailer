@@ -142,8 +142,10 @@ function displayError(){
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+      if(this.responseText.trim() == 'Please login to view this page'){
+        window.location.href = '../Login/login.html';
+      }
       document.getElementById('debug').innerHTML = this.responseText.trim();
-      console.log(this.responseText);
     }
   }
   xmlhttp.open("GET", "fetchError.php", true);
