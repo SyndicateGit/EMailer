@@ -1,44 +1,48 @@
 # EMailer
 Online Email App. Create and send emails online.
+Features include: login, signup, logout, darkMode settings that persist accross user sessions, create emails (draft or send), view emails, edit draft emails, delete emails, and contact us page.
 
-## Structure: 
-- /Pages 
-  - /Page
-    - page.html
-    - page.module.css
-    - page.js
-    - page.php
-- /SharedComponents
-  - component.js
+# Link: https://comp3340.zeng25.myweb.cs.uwindsor.ca/EMailer 
 
-## Pages 
-contains folders pertaining to individual pages with corresponding html, module.css and js files. 
+## Front-end:
+Copy all folders in your myweb file directory of your choosing.
 
-Also includes page.php file to handle XMLHttpRequest requests from the page. 
-Refer to https://www.w3schools.com/xml/xml_http.asp for example.
+## Database Configuration
+The project is configured through the `config.php` file, which sets up the database connection and other global settings. Key configurations include:
+- Log into http://www.myweb.cs.uwindsor.ca/ with your Uwin Credentials.
+- Navigate to Account Manager > Databases
+- Create a new database, keep track of your database name, and password.
+- Modify the `config.php` file to include your database details:
+    ```php
+    $CFG = new stdClass();
+    $CFG->base_url = 'your website URL';
+    $CFG->site_wide_password_salt = 'your chosen password salt';
+    $CFG->dbtype = 'mysql';
+    $CFG->dbhost = 'localhost';
+    $CFG->dbname = 'your_database_name';
+    $CFG->dbuser = 'your_username';
+    $CFG->dbpass = 'your_password';
+    $CFG->db_admin_permit_create_drop = TRUE;
+    $CFG->db_admin_only_allow_ip = 'your_ip_address (while connected to GlobalProtect VPN)';
+    $CFG->emailaddr_support = 'your@adminEmail.com';
+    ```
+## Setting Up Database Tables
+Use the PHP scripts provided to set up the initial structure of your database.
 
-Includes a template_page.js and template_css.module.css to copy into respective page.html and page.module.css files to have the basic layout of the page persist accross pages.
+### Scripts and Their Functions
+- **`userdb-create.php`**: Creates the table for user data.
+- **`emaildb-create.php`**: Sets up the table for email data.
+- **`contactus-create.php`**: Create the table for contact us data.
 
-Pages:
-- Login
-- Signup
-- Create Email (uses TinyMCE for email body)
-- View Emails page (includes delete email button and edit button)
-- Contact Us Page
-- Edit Emails page (done after create Email page)
+### Running Scripts
+Scripts should be placed in your project directory and can be run directly from a web browser via the URL. After running all db, change folder permissions from db to not allow public access. Users already can't access it without admin ip address but with this it makes it so they won't know which files are under db. 
 
-## SharedComponents:
-Contains js scripts that help render shared components. For example: header.js and navbar.js would find element with id="header" and id="navbar" and generate child HTML nodes to create the header and footer.
+**Example:** In your browser run: https://comp3340.blanchad.myweb.cs.uwindsor.ca/path/to/script.php
 
-These are used to create the template of the page and linked in template_page.html to create the basic layout every page has (header on top, navbar below header, main after. Signup/Login doesn't have nav).
+### Other User Operations
+- **Destroy Users Table:** Run `userdb-destroy.php` to drop the users table. This is IP-restricted to ensure only the admin can drop the user table.
+- **Insert User:** Use the `mockuser.php` script to insert mock user data into the database.
 
-Header: Includes App name on left, Signin/Signout button on right (show depending on if user is signed in(we can use local storage to create user sessions)).
-
-Navbar: Links to Create Email and View Emails page.
-
-
-## Setup:
-1. Open up the terminal in the directory of your choosing.
-2. Run git clone https://github.com/SyndicateGit/EMailer.git
-3. Double click index.html to load onto your browser. If you have VSCode you can install an extension called Live Server that helps with launching your index.html page and updating it whenever you save a change to your files.
-4. PHP won't run locally. For now you can do all your pages in html/css/js and then we'll figure out the form submission and data fetching later. The backend team will handle all the PHP scripting stuff once your forms are completed. We'll upload it to myweb to test out the backend afterwards.
+### Email Operations
+- **Destroy Emails Table:** `emaildb-destroy.php` allows the admin to drop the emails table from the database. This is IP-restricted to ensure only the admin can drop the user table.
+- **Insert Email:** The `mockemail.php` script can be used to generate and insert mock emails into the database.
