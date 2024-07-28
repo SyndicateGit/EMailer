@@ -1,5 +1,5 @@
 <?php
-    require_once('../../db/common.php');
+    require_once('../../../private/db/common.php');
 
     // Check if user is logged in upon page load
     if (!isset($_SESSION['user_id'])) {

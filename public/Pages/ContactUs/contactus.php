@@ -1,6 +1,6 @@
 <?php
-require_once('../../db/common.php');
-require_once('../../db/autoload/dbcontactus.php');
+require_once('../../../private/db/common.php');
+require_once('../../../private/db/autoload/dbcontactus.php');
 
 header('Content-Type: application/json');
 

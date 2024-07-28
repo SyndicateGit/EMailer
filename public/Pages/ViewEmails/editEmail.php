@@ -1,6 +1,6 @@
 <?php
-require_once('../../db/common.php');
-require_once('../../db/autoload/dbemail.php');
+require_once('../../../private/db/common.php');
+require_once('../../../private/db/autoload/dbemail.php');
 
 // Check if user is logged in, if not redirect to login page
 if (!isset($_SESSION['user_id'])) {

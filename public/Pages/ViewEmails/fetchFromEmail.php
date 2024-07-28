@@ -1,5 +1,5 @@
 <?php
-require_once('../../db/common.php');
+require_once('../../../private/db/common.php');
 
 // Used to set the from email field in email cards
 $from_email = $_SESSION['from_email'];

@@ -1,6 +1,6 @@
 <?php
-require_once('../../db/common.php');
-require_once('../../db/autoload/dbemail.php');
+require_once('../../../private/db/common.php');
+require_once('../../../private/db/autoload/dbemail.php');
 
 
 $dbEmail = new dbemail();

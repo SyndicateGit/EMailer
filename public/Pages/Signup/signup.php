@@ -1,5 +1,5 @@
 <?php
-require_once('../../db/common.php');
+require_once('../../../private/db/common.php');
 session_start();
 $fname = strip_tags($_POST['fname']);
 $lname = strip_tags($_POST['lname']);

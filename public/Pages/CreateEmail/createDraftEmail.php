@@ -1,6 +1,6 @@
 <?php
-require_once('../../db/common.php');
-require_once('../../db/autoload/dbemail.php');
+require_once('../../../private/db/common.php');
+require_once('../../../private/db/autoload/dbemail.php');
 
 // Get the email details from the form
 // strip_tags for security against html injection attacks
