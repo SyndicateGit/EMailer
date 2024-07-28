@@ -44,6 +44,6 @@ Scripts should be placed in your project directory and can be run directly from 
 - **Destroy Emails Table:** `emaildb-destroy.php` allows the admin to drop the emails table from the database. This is IP-restricted to ensure only the admin can drop the user table.
 - **Insert Email:** The `mockemail.php` script can be used to generate and insert mock emails into the database.
 
-### User Operations
+### Contact us Operations
 - **Destroy contact us Table:** Run `contactus-destroy.php` to drop the contact us table. This is IP-restricted to ensure only the admin can drop the user table.
-- **Insert User:** Use the `mockcontactus.php` script to insert mock contact us data into the database.
+- **Insert Contact us data:** Use the `mockcontactus.php` script to insert mock contact us data into the database.
