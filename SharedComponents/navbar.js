@@ -30,6 +30,11 @@ function buildNavbarPages(pages) {
     }
   }
 
+  const logoutElement = document.createElement("a");
+  logoutElement.href = "../Logout/logout.php";
+  logoutElement.textContent = "Logout";
+  navbarPagesContainer.appendChild(logoutElement);
+
   return navbarPagesContainer;
 }
 
