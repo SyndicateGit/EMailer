@@ -25,3 +25,11 @@ document
       })
       .catch((error) => console.error("Error:", error));
   });
+
+  function applyDarkMode(){
+    const darkmode = localStorage.getItem('darkMode');
+    if(darkmode == 'true'){
+      document.body.classList.add('dark');
+    }
+  }
+  applyDarkMode();

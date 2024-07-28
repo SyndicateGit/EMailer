@@ -206,6 +206,8 @@ function darkMode(boolean){
   }
 }
 
+
+
 document.getElementById('darkmode').addEventListener('change', (event) => {
   console.log(event.target.checked);
   darkMode(event.target.checked);
@@ -221,8 +223,12 @@ if(darkmode == 'true'){
   document.body.classList.add('dark');
   document.getElementById('darkmode').checked = true;
 }
-
+function applyDarkMode(){
+  const darkmode = localStorage.getItem('darkMode');
+  if(darkmode == 'true'){
+    document.body.classList.add('dark');
+  }
+}
+applyDarkMode();
 fetchEmailStuff(setFromField);
 displayError();
-
-
