@@ -7,10 +7,10 @@ if (!isset($_SESSION['user_id'])) {
   exit;
 }
 
-$to_email = $_POST['to-email'];
-$email_subject = $_POST['email-subject'];
-$email_body = $_POST['email-body'];
-$from_email = $_SESSION['from_email'];
+$to_email = strip_tags($_POST['to-email']);
+$email_subject = strip_tags($_POST['email-subject']);
+$email_body = strip_tags($_POST['email-body']);
+$from_email = strip_tags($_SESSION['from_email']);
 
 # TODO: Get rid of all string inside <>
 
@@ -25,11 +25,15 @@ $draft = 1; // Draft
 try{
   $dbEmail->insert($user, $to_email, $from_email, $email_body, $email_subject, $draft, $date, $time);
   echo "Email sent";
+  if(isset($_SESSION['signupError'])) {
+    unset($_SESSION['signupError']); 
+  }
   header('Location: ../ViewEmails/ViewEmails.html');
 } catch (Exception $e){
   echo "Error sending email";
+  $_SESSION['sendError'] = 'Error: the email failed to save as draft. Please try again.';
+  header('Location: ../CreateEmail/CreateEmail.html?to-email=' . urlencode($to_email) . '&email-subject=' . urlencode($email_subject) . '&email-body=' . urlencode($email_body));
+  exit;
 }
-
-
 exit;
 ?>

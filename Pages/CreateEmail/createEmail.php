@@ -8,10 +8,10 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 
-$to_email = $_POST['to-email'];
-$email_subject = $_POST['email-subject'];
-$email_body = $_POST['email-body'];
-$from_email = $_SESSION['from_email'];
+$to_email = strip_tags($_POST['to-email']);
+$email_subject = strip_tags($_POST['email-subject']);
+$email_body = strip_tags($_POST['email-body']);
+$from_email = strip_tags($_SESSION['from_email']);
 
 
 $dbEmail = new dbemail();
@@ -24,6 +24,9 @@ $draft = 0; // Not a draft
 try{
   $dbEmail->insert($user, $to_email, $from_email, $email_body, $email_subject, $draft, $date, $time);
   echo "Email sent";
+  if(isset($_SESSION['signupError'])) {
+    unset($_SESSION['signupError']); 
+  }
   header('Location: ../ViewEmails/ViewEmails.html');
 } catch (Exception $e){
   echo "Error sending email";
