@@ -9,8 +9,10 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $errorMessage = $_SESSION['errorMessage'];
+unset($_SESSION['errorMessage']);
 
 if($errorMessage == null){
+  echo '';
   exit;
 }
 

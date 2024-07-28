@@ -138,6 +138,18 @@ function handleDelete(emailId){
   xmlhttp.send();
 }
 
+function displayError(){
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById('debug').innerHTML = this.responseText.trim();
+      console.log(this.responseText);
+    }
+  }
+  xmlhttp.open("GET", "fetchError.php", true);
+  xmlhttp.send();
+}
+
 function handleEdit(emailId){
   document.getElementById('edit-email-form').removeAttribute('hidden');
   document.getElementById('email-id').value = emailId;
@@ -211,6 +223,6 @@ if(darkmode == 'true'){
 }
 
 fetchEmailStuff(setFromField);
-
+displayError();
 
 
