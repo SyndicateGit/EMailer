@@ -8,7 +8,6 @@ $pass = strip_tags($_POST['password']);
 
 
 $dbUser = new dbuser();
-$email .= "@example.com";
 
 //Check if the user already exists
 try {
