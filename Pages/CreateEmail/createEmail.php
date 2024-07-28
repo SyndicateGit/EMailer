@@ -7,6 +7,7 @@ if (!isset($_SESSION['user_id'])) {
   exit;
 }
 
+
 $to_email = $_POST['to-email'];
 $email_subject = $_POST['email-subject'];
 $email_body = $_POST['email-body'];
@@ -26,6 +27,9 @@ try{
   header('Location: ../ViewEmails/ViewEmails.html');
 } catch (Exception $e){
   echo "Error sending email";
+  $_SESSION['sendError'] = 'Error: the email failed to send. Please try again.';
+  header('Location: ../CreateEmail/CreateEmail.html?to-email=' . urlencode($to_email) . '&email-subject=' . urlencode($email_subject) . '&email-body=' . urlencode($email_body));
+  exit;
 }
 
 
