@@ -1,26 +1,40 @@
 <?php
 require_once('../../db/common.php');
 session_start();
-$fname = $_POST['fname'];
-$lname = $_POST['lname'];
-$email = $_POST['address'];
-$pass = $_POST['password'];
+$fname = strip_tags($_POST['fname']);
+$lname = strip_tags($_POST['lname']);
+$email = strip_tags($_POST['address']);
+$pass = strip_tags($_POST['password']);
 
 
 $dbUser = new dbuser();
+$email .= "@example.com";
 
 //Check if the user already exists
-if($dbUser->email_lookup($email)) {
-    $_SESSION['signupError'] = "User already exists. Try again";
+try {
+    if($dbUser->email_lookup($email)) {
+        $_SESSION['signupError'] = "User already exists. Try again";
+        header('Location: ./signup.html?fname=' . urlencode($fname) . '&lname=' 
+        . urlencode($lname) . '&address=' . urlencode($_POST['address']));
+        exit;
+    }
+}catch (Exception $e) {
+    $_SESSION['signupError'] = "Failed to check existing users.";
     header('Location: ./signup.html?fname=' . urlencode($fname) . '&lname=' 
     . urlencode($lname) . '&address=' . urlencode($_POST['address']));
     exit;
 }
 
 // Add the user to the database
-$dbUser->insert($fname, $lname,$email, $pass);
-
-$_SESSION['from_email'] = $email;
+try {
+    $dbUser->insert($fname, $lname,$email, $pass);
+    $_SESSION['from_email'] = $email;
+}catch (Exception $e) {
+    $_SESSION['signupError'] = "Failed to create new account.";
+    header('Location: ./signup.html?fname=' . urlencode($fname) . '&lname=' 
+    . urlencode($lname) . '&address=' . urlencode($_POST['address']));
+    exit;
+}    
 
 // Redirect to the login page
 header('Location: ../Login/login.html');

@@ -1,6 +1,6 @@
 const passInput = document.getElementById("password");
 const form = document.querySelector("form");
-const errorModal = document.getElementById("errorModal");
+const errorBox = document.getElementById("errorBox");
 
 const regex = {
     minLength: /^.{10,}$/,   // Minimum 10 characters
@@ -20,13 +20,14 @@ passInput.addEventListener("input", () => {
 });
 
 form.addEventListener("submit", (event) => {
+    errorBox.classList.remove("visible");
+    errorBox.textContent = "";
     if(!validatePassword(passInput.value)) {
         event.preventDefault();
-        alert("The password you have entered does not meet the requirements. Try again.");
+        errorBox.textContent = "The password you have entered does not meet the requirements. Try again.";
+        errorBox.classList.add("visible");
         return false;
     }
-    errorModal.classList.remove("visible");
-    errorModal.textContent = "";
 });
 
 function validatePassword(password) {
@@ -41,13 +42,16 @@ function validatePassword(password) {
 window.onload = function() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        const response = this.responseText;
-        if(response) {
-            errorModal.textContent = response;
-            errorModal.classList.add("visible");
+        if (this.readyState == 4 && this.status == 200) {
+            const response = this.responseText.trim();
+            if(response) {
+                errorBox.textContent = response;
+                errorBox.classList.add("visible");
+            }
+        }else {
+            errorBox.textContent = "Signup Failed. Please try again.";
+            errorBox.classList.add("visible");
         }
-      }
     };
     xmlhttp.open("GET", "userError.php", true);
     xmlhttp.send();
