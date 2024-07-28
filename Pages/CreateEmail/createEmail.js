@@ -89,14 +89,3 @@ window.onload = function() {
 
     xhr.send(null);
 }; 
-
-
-
-
-function applyDarkMode(){
-  const darkmode = localStorage.getItem('darkMode');
-  if(darkmode == 'true'){
-    document.body.classList.add('dark');
-  }
-}
-applyDarkMode();
