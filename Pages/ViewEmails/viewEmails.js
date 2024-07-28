@@ -104,14 +104,14 @@ function generateEmailCards(emails){
             <h3>TO: ${email.to_email}</h3>
           </div>
           <div class="flex justify-between">
-            <button class='${"visible-"+ email.is_draft}' id='${"edit-"+ email._id}'>Edit</button>
+            <button class='${"visible-"+ email.draft}' id='${"edit-"+ email._id}'>Edit</button>
             <button id='${"delete-"+ email._id}'>Delete</button>
           </div>
         </div>
         
         
         <h4>Subject: ${email.email_subject}</h4>
-        <h5 class='${"visible-"+ email.is_draft}'>Draft</h5>
+        <h5 class='${"visible-"+ email.draft}'>Draft</h5>
         <p>${email.email_body}</p>
         <div class='flex flex-1 justify-between items-end'>
           <p>${email.date}</p>
@@ -142,8 +142,10 @@ function displayError(){
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+      if(this.responseText.trim() == 'Please login to view this page'){
+        window.location.href = '../Login/login.html';
+      }
       document.getElementById('debug').innerHTML = this.responseText.trim();
-      console.log(this.responseText);
     }
   }
   xmlhttp.open("GET", "fetchError.php", true);
@@ -206,6 +208,8 @@ function darkMode(boolean){
   }
 }
 
+
+
 document.getElementById('darkmode').addEventListener('change', (event) => {
   console.log(event.target.checked);
   darkMode(event.target.checked);
@@ -221,8 +225,12 @@ if(darkmode == 'true'){
   document.body.classList.add('dark');
   document.getElementById('darkmode').checked = true;
 }
-
+function applyDarkMode(){
+  const darkmode = localStorage.getItem('darkMode');
+  if(darkmode == 'true'){
+    document.body.classList.add('dark');
+  }
+}
+applyDarkMode();
 fetchEmailStuff(setFromField);
 displayError();
-
-

@@ -61,6 +61,10 @@ button{
   margin-top: 1rem;
 }
 
+.visible-0{
+  display: none;
+}
+
 .visible-false{
   display: none;
 }

@@ -17,7 +17,7 @@
         <h1>Create a message</h1>
       </div>
       <form id="send-email-form" action="./createEmail.php" method="post">
-        <div class="editor-row" id="error-modal">Errors</div>
+        <div class="editor-row" id="error-modal"></div>
         <div class="editor-row" id="button-row">
           <div class="email-button-group">
             <button type="submit" formaction="./createDraftEmail.php" class="email-button" id="draft-button" >
@@ -29,15 +29,12 @@
           </div>
         </div>
         <div class="editor-row single-input-field" id="recipient-row">
-          <p id="recipient-validation-modal" class="validation-modal" >&#9888; A recipient email address is required</p>
-          <input type="email" name="to-email" class="email-field" id="to-email" placeholder="Recipient"/>
+          <input type="email" name="to-email" class="email-field" id="to-email" placeholder="Recipient" required/>
         </div>
         <div class="editor-row single-input-field" id="subject-row">
-          <p id="subject-validation-modal"class ="validation-modal" >&#9888; A subject line is required</p>
-          <input type="text" name="email-subject" class="email-field" id="email-subject" placeholder="Subject" />
+          <input type="text" name="email-subject" class="email-field" id="email-subject" placeholder="Subject" required/>
         </div>
         <div class="editor-row email-body-div">
-          <p id="body-validation-modal"class ="validation-modal" >&#9888; Email body cannot be empty.</p>
           <textarea name="email-body" id="email-body-editor" placeholder="Write your email"></textarea>
         </div>
       </form>

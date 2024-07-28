@@ -2,10 +2,6 @@
 require_once('../../db/common.php');
 require_once('../../db/autoload/dbemail.php');
 
-if (!isset($_SESSION['user_id'])) {
-    header('Location: ../Login/login.html');
-    exit;
-}
 
 $dbEmail = new dbemail();
 
@@ -18,8 +14,12 @@ if($user_id == null){
 
 try{
     $Emails = $dbEmail->lookup_by_user($user_id);
+    if(isset($_SESSION['signupError'])) {
+        unset($_SESSION['signupError']); 
+    }
 } catch (Exception $e){
     echo "Error fetching emails";
+    $_SESSION['errorMessage'] = "Error fetching emails";
     exit;
 }
 

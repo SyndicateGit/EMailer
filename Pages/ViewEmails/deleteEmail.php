@@ -27,11 +27,13 @@ if($emailId == null){
 try{
     $dbEmail->delete_by_id($emailId);
     echo "Email deleted";
+    if(isset($_SESSION['signupError'])) {
+        unset($_SESSION['signupError']); 
+    }
+    exit;
 } catch (Exception $e){
+    $_SESSION['errorMessage'] = "Error deleting email";
     echo "Error deleting email";
-}
-
-echo $emailId;
-
+} 
 exit;
 ?>

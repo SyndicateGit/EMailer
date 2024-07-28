@@ -3,7 +3,7 @@ require_once('../common.php');
 
 header('Content-Type: text/plain');
 try {
-  echo "Creating Email DB...\n";
+  echo "Creating Contact Us DB...\n";
   $db = new dbcontactus();
   $db->admin_create_db();
   echo "Finished creating DB.\n";

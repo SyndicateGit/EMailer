@@ -3,7 +3,7 @@ require_once('../../db/common.php');
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../Login/login.html');
-    exit;
+    die();
 }
 
 $from_email = $_SESSION['from_email'];
