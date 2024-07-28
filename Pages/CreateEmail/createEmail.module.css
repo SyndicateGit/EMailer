@@ -35,13 +35,21 @@ h1 {
     /* padding-left: 5px; */
 }
 
-input>editor-row.single-input-field {
+input {
     padding-left: 12px;
     border-width: 1px;
     border-style: solid;
     border-radius: 5px;
     background-color: white;
     /* padding-top: 5px; */
+}
+
+p {
+    color: red;
+}
+
+.validation-modal {
+    visibility: hidden;
 }
 
 
@@ -80,8 +88,8 @@ input>editor-row.single-input-field {
 }
 
 .email-button-group {
-    /* margin: auto !important;
-    width: 100% !important; */
+    /* margin: auto !important; */
+    /* width: 100% !important; */
 }
 
 #button-row {
@@ -115,14 +123,12 @@ input>editor-row.single-input-field {
     border-width: 2px;
 }
 
-button>img {
-    color: white;
-}
-
-i.button-icon {
-    color: white;
-}
 
 input:focus {
     /* outline: none; */
+}
+
+#error-modal {
+    visibility: hidden;
+    color: red;
 }
