@@ -48,9 +48,6 @@ window.onload = function() {
                 errorBox.textContent = response;
                 errorBox.classList.add("visible");
             }
-        }else {
-            errorBox.textContent = "Signup Failed. Please try again.";
-            errorBox.classList.add("visible");
         }
     };
     xmlhttp.open("GET", "userError.php", true);
