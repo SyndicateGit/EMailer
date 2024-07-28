@@ -29,6 +29,9 @@ try {
 try {
     $dbUser->insert($fname, $lname,$email, $pass);
     $_SESSION['from_email'] = $email;
+    if(isset($_SESSION['signupError'])) {
+        unset($_SESSION['signupError']); 
+    }
 }catch (Exception $e) {
     $_SESSION['signupError'] = "Failed to create new account.";
     header('Location: ./signup.html?fname=' . urlencode($fname) . '&lname=' 

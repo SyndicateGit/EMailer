@@ -213,7 +213,6 @@ button:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 4rem;
-    display: flex;
     justify-content: center;
     align-items: center;
     color: #DF0334;
@@ -221,6 +220,6 @@ button:hover {
 }
 
 #errorBox.visible {
-    display: block;
+    display: flex;
 }
 
