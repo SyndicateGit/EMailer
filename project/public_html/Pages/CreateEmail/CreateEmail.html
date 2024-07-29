@@ -1,49 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Emailer</title>
-  <script src="js/tinymce/tinymce.min.js" type="application/javascript"></script>
-  <link rel="stylesheet" href="../template_css.module.css">
-</head>
-<body>
-  <div id="header"></div>
-  <div id="navbar"></div>
-  <main>
-    <!-- Page content goes here -->
-    <div class="email-editor-section">
-      <div class="editor-title-row">
-        <h1>Create a message</h1>
-      </div>
-      <form id="send-email-form" action="./createEmail.php" method="post">
-        <div class="editor-row" id="error-modal"></div>
-        <div class="editor-row" id="button-row">
-          <div class="email-button-group">
-            <button type="submit" formaction="./createDraftEmail.php" class="email-button" id="draft-button" >
-              Save as draft
-            </button>
-            <button type="submit" class="email-button" formaction="./createEmail.php"  id="send-button" >
-              Send
-            </button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Email</title>
+    <script
+      src="js/tinymce/tinymce.min.js"
+      type="application/javascript"
+    ></script>
+    <link rel="stylesheet" href="../template_css.module.css" />
+  </head>
+  <body>
+    <div id="header"></div>
+    <div id="navbar"></div>
+    <main>
+      <!-- Page content goes here -->
+      <div class="email-editor-section">
+        <div class="editor-title-row">
+          <h1>Create a message</h1>
+        </div>
+        <form id="send-email-form" action="./createEmail.php" method="post">
+          <div class="editor-row" id="error-modal"></div>
+          <div class="editor-row" id="button-row">
+            <div class="email-button-group">
+              <button
+                type="submit"
+                formaction="./createDraftEmail.php"
+                class="email-button"
+                id="draft-button"
+              >
+                Save as draft
+              </button>
+              <button
+                type="submit"
+                class="email-button"
+                formaction="./createEmail.php"
+                id="send-button"
+              >
+                Send
+              </button>
+            </div>
           </div>
-        </div>
-        <div class="editor-row single-input-field" id="recipient-row">
-          <input type="email" name="to-email" class="email-field" id="to-email" placeholder="Recipient" required/>
-        </div>
-        <div class="editor-row single-input-field" id="subject-row">
-          <input type="text" name="email-subject" class="email-field" id="email-subject" placeholder="Subject" required/>
-        </div>
-        <div class="editor-row email-body-div">
-          <textarea name="email-body" id="email-body-editor" placeholder="Write your email"></textarea>
-        </div>
-      </form>
-    </div>
-  </main>
-  <div id="footer"></div>
-  <script src="../../SharedComponents/header.js"></script>
-  <script src="../../SharedComponents/navbar.js"></script>
-  <script src="../../SharedComponents/footer.js"></script>
-  <script src="createEmail.js"></script>
-</body>
+          <div class="editor-row single-input-field" id="recipient-row">
+            <input
+              type="email"
+              name="to-email"
+              class="email-field"
+              id="to-email"
+              placeholder="Recipient"
+              required
+            />
+          </div>
+          <div class="editor-row single-input-field" id="subject-row">
+            <input
+              type="text"
+              name="email-subject"
+              class="email-field"
+              id="email-subject"
+              placeholder="Subject"
+              required
+            />
+          </div>
+          <div class="editor-row email-body-div">
+            <textarea
+              name="email-body"
+              id="email-body-editor"
+              placeholder="Write your email"
+            ></textarea>
+          </div>
+        </form>
+      </div>
+    </main>
+    <div id="footer"></div>
+    <script src="../../SharedComponents/header.js"></script>
+    <script src="../../SharedComponents/navbar.js"></script>
+    <script src="../../SharedComponents/footer.js"></script>
+    <script src="createEmail.js"></script>
+  </body>
 </html>
