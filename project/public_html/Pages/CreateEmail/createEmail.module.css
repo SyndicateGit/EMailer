@@ -1,5 +1,5 @@
 :root {
-    --bg-color: #C9A661;
+    --bg-color: white;
     --button-color: #1189df;
     --accent-color: darkslategray;
 }
@@ -9,30 +9,18 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* main * {
-    background-color: blueviolet;
-} */
-
 h1 {
     font-weight: lighter;
 }
 
 .email-editor-section {
-    /* display: flex; */
     margin: auto;
-    width: 80%;
+    width: auto;
 }
 
 .editor-row {
-    /* border-bottom: 1px solid; */
     border-color: var(--accent-color);
-    /* padding: 5px 0px 5px 0px; */
     margin: 5px;
-}
-
-.editor-title-row {
-    /* margin: 5px; */
-    /* padding-left: 5px; */
 }
 
 input {
@@ -41,7 +29,6 @@ input {
     border-style: solid;
     border-radius: 5px;
     background-color: white;
-    /* padding-top: 5px; */
 }
 
 p {
@@ -52,7 +39,6 @@ p {
     visibility: hidden;
 }
 
-
 /* Remove the border of TinyMCE's default editor */
 .tox-tinymce {
     border-style: solid !important;
@@ -61,35 +47,18 @@ p {
     border-width: 1px !important;
 }
 
-/* #subject-row {
-    border-bottom: 3px;
-}
-
-#recipient-row {
-    /* border-top: 3px !important; */
-    /* border-width: 3px 0px 1px 0px;
-    border-width: 1px;
-    border-style: solid;
-} */
-
 .email-field {
     width: 30%;
     height: auto;
     border: none;
     padding: 5px;
     line-height: 30px;
-    /* font-weight: 400em; */
     font-size: medium;
     padding-left: 12px;
     border-width: 1px;
     border-style: solid;
     border-radius: 5px;
     background-color: white;
-}
-
-.email-button-group {
-    /* margin: auto !important; */
-    /* width: 100% !important; */
 }
 
 #button-row {
@@ -110,10 +79,13 @@ p {
     border: none;
 }
 
+.email-body-div {
+    height: auto;
+}
+
 #send-button {
     border-style: solid;
     border-color: var(--button-color);
-    /* border-color: grey; */
     border-width: 2px;
 }
 
@@ -121,11 +93,6 @@ p {
     border-color: var(--button-color);
     border-style: solid;
     border-width: 2px;
-}
-
-
-input:focus {
-    /* outline: none; */
 }
 
 #error-modal {
